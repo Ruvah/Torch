@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIContent : MonoBehaviour
+public class UIContent : UIObject
 {
     // -- PUBLIC
 
@@ -11,6 +11,5 @@ public class UIContent : MonoBehaviour
     
     // -- PROTECTED
     
-    protected Rect ContentRect => ((RectTransform) transform).rect;
     protected Vector2 _MinimumSize;
 }

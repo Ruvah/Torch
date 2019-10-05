@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextMessage
+public class Profile
 {
-    public string Text;
-    public Profile Author;
+    public bool IsPlayer;
 }

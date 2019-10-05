@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [ExecuteInEditMode]
-public class UIWindow : MonoBehaviour
+public class UIWindow : UIObject
 {
     // -- PUBLIC
 

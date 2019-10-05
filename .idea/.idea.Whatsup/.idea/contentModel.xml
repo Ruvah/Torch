@@ -8,15 +8,28 @@
       <e p="Assets" t="Include">
         <e p="_Whatsup" t="Include">
           <e p="Scripts" t="Include">
+            <e p="CommonCode" t="Include">
+              <e p="MonoBehaviourSingleton.cs" t="Include" />
+              <e p="ReadOnlyInInspector.cs" t="Include" />
+            </e>
+            <e p="Managers" t="Include">
+              <e p="HudManager.cs" t="Include" />
+            </e>
+            <e p="Profile.cs" t="Include" />
+            <e p="Tests" t="Include">
+              <e p="MessengerTester.cs" t="Include" />
+            </e>
             <e p="Texting" t="Include">
+              <e p="MessengerApp.cs" t="Include" />
               <e p="TextMessage.cs" t="Include" />
-              <e p="UIMessengerApp.cs" t="Include" />
               <e p="UIMessengerText.cs" t="Include" />
+              <e p="UIMessengerTextsManager.cs" t="Include" />
             </e>
             <e p="WindowSystem" t="Include">
               <e p="ISlottable.cs" t="Include" />
               <e p="UIContent.cs" t="Include" />
               <e p="UIDockArea.cs" t="Include" />
+              <e p="UIObject.cs" t="Include" />
               <e p="UISlot.cs" t="Include" />
               <e p="UISlotContent.cs" t="Include" />
               <e p="UIWindow.cs" t="Include" />

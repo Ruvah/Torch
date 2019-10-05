@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class UIDockArea : MonoBehaviour
+public class UIDockArea : UIObject
 {
     // -- FIELDS
     
@@ -29,8 +29,9 @@ public class UIDockArea : MonoBehaviour
         }
     }
 
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         if (Content)
         {
             RectTransform = transform as RectTransform;
