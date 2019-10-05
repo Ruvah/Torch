@@ -32,6 +32,7 @@
               <e p="UIObject.cs" t="Include" />
               <e p="UISlot.cs" t="Include" />
               <e p="UISlotContent.cs" t="Include" />
+              <e p="UIVerticalTable.cs" t="Include" />
               <e p="UIWindow.cs" t="Include" />
             </e>
           </e>

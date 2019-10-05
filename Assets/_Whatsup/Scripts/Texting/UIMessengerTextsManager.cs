@@ -26,5 +26,7 @@ public class UIMessengerTextsManager : UIObject
 
         text_message.Message = message;
     }
+
+    
     
 }

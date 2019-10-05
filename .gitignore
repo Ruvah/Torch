@@ -7,9 +7,9 @@ Assets/AssetStoreTools*
 
 #Rider
 #Rider
-Whatsup/.idea
-Whatsup/Assets/Plugins/Editor/JetBrains
-Whatsup/Assets/Plugins/Editor/JetBrains.meta
+.idea
+Assets/Plugins/Editor/JetBrains
+Assets/Plugins/Editor/JetBrains.meta
 
 # Visual Studio cache directory
 .vs/
