@@ -25,7 +25,7 @@ public class UIWindow : MonoBehaviour
 
     private RectTransform RectTransform;
 
-    [SerializeField]private RectTransform CenterArea;
+    [SerializeField] private RectTransform CenterArea;
     [SerializeField] private Vector2 _Margins;
 
     private void CalculateCenter()

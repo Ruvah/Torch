@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMessengerApp : UIContent
+public class TextMessage
 {
-    
+    public string Message;
 }

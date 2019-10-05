@@ -22,13 +22,19 @@ public class UIDockArea : MonoBehaviour
 
     private void Update()
     {
-        ContentTransform.sizeDelta = RectTransform.rect.size;
-        ContentTransform.anchoredPosition = Vector2.zero;
+        if (Content)
+        {
+            ContentTransform.sizeDelta = RectTransform.rect.size;
+            ContentTransform.anchoredPosition = Vector2.zero;
+        }
     }
 
-    private void Awake()
+    private void OnValidate()
     {
-        RectTransform = transform as RectTransform;
-        ContentTransform = Content.transform as RectTransform;
+        if (Content)
+        {
+            RectTransform = transform as RectTransform;
+            ContentTransform = Content.transform as RectTransform;
+        }
     }
 }
