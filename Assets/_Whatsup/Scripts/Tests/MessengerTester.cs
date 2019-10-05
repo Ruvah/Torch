@@ -19,6 +19,8 @@ public class MessengerTester : MonoBehaviourSingleton<MessengerTester>
         {
             var message = new TextMessage();
             message.Text = "Hello";
+            message.Author.IsPlayer = (i & 1) == 1;
+            
             MessengerApp.TextMessagesParent.AddText(message);
             yield return new WaitForSeconds(1);
         }

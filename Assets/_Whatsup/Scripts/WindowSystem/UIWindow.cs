@@ -21,9 +21,7 @@ public class UIWindow : UIObject
     }
     
     // -- PRIVATE
-
-
-    private RectTransform RectTransform;
+    
 
     [SerializeField] private RectTransform CenterArea;
     [SerializeField] private Vector2 _Margins;
@@ -41,12 +39,7 @@ public class UIWindow : UIObject
     
     // -- UNITY
 
-
-    private void Start()
-    {
-        RectTransform = (RectTransform) transform;
-    }
-
+    
     private void Update()
     {
         #if UNITY_EDITOR

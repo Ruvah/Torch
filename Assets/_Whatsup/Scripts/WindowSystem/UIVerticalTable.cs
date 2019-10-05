@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class UIVerticalTable : UIObject
+public abstract class UIVerticalTable : UIObject
 {
-    public enum VerticalTableAlignment
+    public enum HorizontalAlignment
     {
         Centre,
         Left,
@@ -25,23 +24,53 @@ public class UIVerticalTable : UIObject
             RecreateTable();
         }
     }
+    
+    protected List<KeyValuePair<UIObject, HorizontalAlignment>> ItemsList = new List<KeyValuePair<UIObject, HorizontalAlignment>>();
 
+    [SerializeField]
     private float _Spacing;
-    private List<KeyValuePair<UIObject, VerticalTableAlignment>> ItemsList;
-
-    [SerializeField] private VerticalTableAlignment ItemAlignment;
 
     // -- METHODS
 
-    public void AddItem(UIObject item)
+    public virtual void AddItem(UIObject item, HorizontalAlignment alignment)
     {
-        AddItem(item, ItemAlignment);
-    }
+        var anchored_position = ContentRect.max - item.ContentRect.size * 0.5f;
+        anchored_position.y -= Spacing;
 
-    public virtual void AddItem(UIObject item, VerticalTableAlignment alignment)
-    {
-        var last_item = ItemsList.Last();
-        Vector2 anchored_position = ContentRect.max;
+
+        if (ItemsList.Count > 0)
+        {
+            foreach (var item_aligment in ItemsList)
+            {
+                anchored_position.y -= item_aligment.Key.ContentRect.height;
+                anchored_position.y -= Spacing;
+            }
+        }
+
+        switch (alignment)
+        {
+            case HorizontalAlignment.Left:
+            {
+                anchored_position.x = (-ContentRect.width + item.ContentRect.width) * 0.5f;
+                break;
+            }
+
+            case HorizontalAlignment.Centre:
+            {
+                anchored_position.x = 0;   
+                break;
+            }
+
+            case HorizontalAlignment.Right:
+            {
+                anchored_position.x = (ContentRect.width - item.ContentRect.width) * 0.5f;
+                break;
+            }
+        }
+
+        item.RectTransform.anchoredPosition = anchored_position;
+
+        ItemsList.Add(new KeyValuePair<UIObject, HorizontalAlignment>(item, alignment));
     }
     
     private void RecreateTable()

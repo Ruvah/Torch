@@ -5,5 +5,5 @@ using UnityEngine;
 public class TextMessage
 {
     public string Text;
-    public Profile Author;
+    public Profile Author = new Profile();
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class UIMessengerTextsManager : UIObject
+public class UIMessengerTextsManager : UIVerticalTable
 {
     // -- FIELDS
     
@@ -19,12 +19,13 @@ public class UIMessengerTextsManager : UIObject
     {
         var message_object = Instantiate(TextMessagePrefab,transform);
         var text_message = message_object.GetComponent<UIMessengerText>();
-        //var previous_message = MessagesList.Last();
-        //previous_message.transform
-        
-        MessagesList.Add(text_message);
 
         text_message.Message = message;
+
+        HorizontalAlignment alignment;
+        alignment = message.Author.IsPlayer ? HorizontalAlignment.Right : HorizontalAlignment.Left;
+        
+        AddItem(text_message,alignment);
     }
 
     

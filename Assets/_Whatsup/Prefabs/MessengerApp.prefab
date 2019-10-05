@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a936383e9137444858bc6215bf0b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Parent: {fileID: 0}
+  _RectTransform: {fileID: 1049135252449412610}
   TextMessagesParent: {fileID: 8445947009060433638}
 --- !u!1 &7073689617191279021
 GameObject:
@@ -98,5 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b328a1ef67eb04f91f8fbb94b3e288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Parent: {fileID: 3393987723220083488}
+  _RectTransform: {fileID: 5946789031420959372}
+  _Spacing: 5
   TextMessagePrefab: {fileID: 7339331584353025330, guid: 45ae3d118f156b845b55e5451df4d154,
     type: 3}

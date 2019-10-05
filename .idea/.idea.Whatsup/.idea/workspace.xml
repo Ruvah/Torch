@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2375dbe4-fd0e-4c2b-ba9f-b4f8e7694d58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIVerticalTable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIVerticalTable.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Prefabs/MessengerApp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Whatsup/Prefabs/MessengerApp.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Prefabs/TextMessage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Whatsup/Prefabs/TextMessage.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Tests/MessengerTester.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Tests/MessengerTester.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/TextMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/TextMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerText.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerTextsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerTextsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIVerticalTable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIVerticalTable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIWindow.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,48 +37,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerTextsManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+            <state relative-caret-position="225">
+              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding>
-                <marker date="1570306768432" expanded="false" signature="6:97" ph="..." />
-                <marker date="1570306768432" expanded="true" signature="146:735" ph="{...}" />
-                <marker date="1570306768432" expanded="true" signature="383:722" ph="{...}" />
-                <marker date="1570306768432" expanded="true" signature="544:626" ph="/* var previous_message = MessagesList.Last(); ... */" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIVerticalTable.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
-              <folding>
-                <marker date="1570309831727" expanded="true" signature="6:97" ph="..." />
-                <marker date="1570309831727" expanded="true" signature="143:941" ph="{...}" />
-                <marker date="1570309831727" expanded="true" signature="184:255" ph="{...}" />
-                <marker date="1570309831727" expanded="true" signature="304:432" ph="{...}" />
-                <marker date="1570309831727" expanded="true" signature="347:426" ph="{...}" />
-                <marker date="1570309831727" expanded="true" signature="664:714" ph="{...}" />
-                <marker date="1570309831727" expanded="true" signature="796:859" ph="{...}" />
-                <marker date="1570309831727" expanded="true" signature="897:918" ph="{...}" />
+                <marker date="1570313186817" expanded="false" signature="6:97" ph="..." />
+                <marker date="1570313186817" expanded="true" signature="153:792" ph="{...}" />
+                <marker date="1570313186817" expanded="true" signature="390:779" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerText.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+              <folding>
+                <marker date="1570311500937" expanded="true" signature="6:91" ph="..." />
+                <marker date="1570311500937" expanded="true" signature="132:534" ph="{...}" />
+                <marker date="1570311500937" expanded="true" signature="183:311" ph="{...}" />
+                <marker date="1570311500937" expanded="true" signature="226:305" ph="{...}" />
+                <marker date="1570311500937" expanded="true" signature="462:515" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIVerticalTable.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <marker date="1570313241052" expanded="true" signature="6:78" ph="..." />
+                <marker date="1570313241052" expanded="true" signature="128:1893" ph="{...}" />
+                <marker date="1570313241052" expanded="true" signature="166:237" ph="{...}" />
+                <marker date="1570313241052" expanded="true" signature="286:414" ph="{...}" />
+                <marker date="1570313241052" expanded="true" signature="329:408" ph="{...}" />
+                <marker date="1570313241052" expanded="true" signature="700:1811" ph="{...}" />
+                <marker date="1570313241052" expanded="true" signature="861:1087" ph="{...}" />
+                <marker date="1570313241052" expanded="true" signature="924:1077" ph="{...}" />
+                <marker date="1570313241052" expanded="true" signature="1115:1649" ph="{...}" />
+                <marker date="1570313241052" expanded="true" signature="1849:1870" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Tests/MessengerTester.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
+            <state relative-caret-position="270">
+              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
               <folding>
-                <marker date="1570295510295" expanded="true" signature="6:92" ph="..." />
-                <marker date="1570295510295" expanded="true" signature="164:747" ph="{...}" />
-                <marker date="1570295510295" expanded="true" signature="316:590" ph="{...}" />
-                <marker date="1570295510295" expanded="true" signature="373:584" ph="{...}" />
-                <marker date="1570295510295" expanded="true" signature="637:745" ph="{...}" />
+                <marker date="1570313468937" expanded="true" signature="6:92" ph="..." />
+                <marker date="1570313468937" expanded="true" signature="164:812" ph="{...}" />
+                <marker date="1570313468937" expanded="true" signature="316:655" ph="{...}" />
+                <marker date="1570313468937" expanded="true" signature="373:649" ph="{...}" />
+                <marker date="1570313468937" expanded="true" signature="702:810" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -82,18 +104,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIWindow.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-225">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="255">
+              <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
               <folding>
-                <marker date="1570304703727" expanded="true" signature="72:943" ph="{...}" />
-                <marker date="1570304703727" expanded="true" signature="124:303" ph="{...}" />
-                <marker date="1570304703727" expanded="true" signature="142:204" ph="{...}" />
-                <marker date="1570304703727" expanded="true" signature="216:297" ph="{...}" />
-                <marker date="1570304703727" expanded="true" signature="508:659" ph="{...}" />
-                <marker date="1570304703727" expanded="true" signature="546:586" ph="{...}" />
-                <marker date="1570304703727" expanded="true" signature="712:775" ph="{...}" />
-                <marker date="1570304703727" expanded="true" signature="802:941" ph="{...}" />
-                <marker date="1570304703727" expanded="true" signature="869:920" ph="{...}" />
+                <marker date="1570311141461" expanded="true" signature="72:820" ph="{...}" />
+                <marker date="1570311141461" expanded="true" signature="124:303" ph="{...}" />
+                <marker date="1570311141461" expanded="true" signature="142:204" ph="{...}" />
+                <marker date="1570311141461" expanded="true" signature="216:297" ph="{...}" />
+                <marker date="1570311141461" expanded="true" signature="470:621" ph="{...}" />
+                <marker date="1570311141461" expanded="true" signature="508:548" ph="{...}" />
+                <marker date="1570311141461" expanded="true" signature="679:818" ph="{...}" />
+                <marker date="1570311141461" expanded="true" signature="746:797" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -103,10 +124,26 @@
         <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/TextMessage.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
               <folding>
-                <marker date="1570293575570" expanded="false" signature="6:78" ph="..." />
-                <marker date="1570293575570" expanded="true" signature="104:159" ph="{...}" />
+                <marker date="1570311907303" expanded="false" signature="6:78" ph="..." />
+                <marker date="1570311907303" expanded="true" signature="104:175" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIObject.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+              <folding>
+                <marker date="1570312341908" expanded="true" signature="6:92" ph="..." />
+                <marker date="1570312341908" expanded="true" signature="131:807" ph="{...}" />
+                <marker date="1570312341908" expanded="true" signature="466:782" ph="{...}" />
+                <marker date="1570312341908" expanded="true" signature="582:776" ph="{...}" />
+                <marker date="1570312341908" expanded="true" signature="697:766" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -140,21 +177,21 @@
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Canvas/UIMessengerApp.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/MessengerText.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerApp.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerText.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Profile.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/TextMessage.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerTexts.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/MessengerApp.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Managers/HudManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Managers/HUDManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Tests/MessengerTester.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIWindow.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/ReadOnlyInInspector.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIDockArea.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIContent.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIWindow.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerText.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/TextMessage.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIObject.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerTextsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIVerticalTable.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Tests/MessengerTester.cs" />
       </list>
     </option>
   </component>
@@ -229,7 +266,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -269,12 +306,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570287459252</updated>
-      <workItem from="1570287464977" duration="13918000" />
+      <workItem from="1570287464977" duration="17552000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13918000" />
+    <option name="totallyTimeSpent" value="17552000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -294,7 +331,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="NuGet" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unity" />
+      <window_info anchor="bottom" id="Unity" weight="0.32916668" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Unit Tests" />
@@ -363,20 +400,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerText.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <marker date="1570293313239" expanded="true" signature="6:91" ph="..." />
-            <marker date="1570293313239" expanded="true" signature="137:539" ph="{...}" />
-            <marker date="1570293313239" expanded="true" signature="188:316" ph="{...}" />
-            <marker date="1570293313239" expanded="true" signature="231:310" ph="{...}" />
-            <marker date="1570293313239" expanded="true" signature="467:520" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Profile.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -384,17 +407,6 @@
           <folding>
             <marker date="1570293575787" expanded="false" signature="6:78" ph="..." />
             <marker date="1570293575787" expanded="true" signature="100:130" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/TextMessage.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <marker date="1570293575570" expanded="false" signature="6:78" ph="..." />
-            <marker date="1570293575570" expanded="true" signature="104:159" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -413,20 +425,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Tests/MessengerTester.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
-          <folding>
-            <marker date="1570295510295" expanded="true" signature="6:92" ph="..." />
-            <marker date="1570295510295" expanded="true" signature="164:747" ph="{...}" />
-            <marker date="1570295510295" expanded="true" signature="316:590" ph="{...}" />
-            <marker date="1570295510295" expanded="true" signature="373:584" ph="{...}" />
-            <marker date="1570295510295" expanded="true" signature="637:745" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Managers/HUDManager.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -438,28 +436,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIWindow.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <marker date="1570304703727" expanded="true" signature="72:943" ph="{...}" />
-            <marker date="1570304703727" expanded="true" signature="124:303" ph="{...}" />
-            <marker date="1570304703727" expanded="true" signature="142:204" ph="{...}" />
-            <marker date="1570304703727" expanded="true" signature="216:297" ph="{...}" />
-            <marker date="1570304703727" expanded="true" signature="508:659" ph="{...}" />
-            <marker date="1570304703727" expanded="true" signature="546:586" ph="{...}" />
-            <marker date="1570304703727" expanded="true" signature="712:775" ph="{...}" />
-            <marker date="1570304703727" expanded="true" signature="802:941" ph="{...}" />
-            <marker date="1570304703727" expanded="true" signature="869:920" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIDockArea.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="45">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
           <folding>
             <marker date="1570305307328" expanded="false" signature="6:92" ph="..." />
             <marker date="1570305307328" expanded="true" signature="148:798" ph="{...}" />
@@ -471,26 +451,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIObject.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIWindow.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="255">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding>
-            <marker date="1570305934203" expanded="true" signature="6:92" ph="..." />
-            <marker date="1570305934203" expanded="true" signature="131:541" ph="{...}" />
-            <marker date="1570305934203" expanded="true" signature="343:539" ph="{...}" />
-            <marker date="1570305934203" expanded="true" signature="406:533" ph="{...}" />
+            <marker date="1570311141461" expanded="true" signature="72:820" ph="{...}" />
+            <marker date="1570311141461" expanded="true" signature="124:303" ph="{...}" />
+            <marker date="1570311141461" expanded="true" signature="142:204" ph="{...}" />
+            <marker date="1570311141461" expanded="true" signature="216:297" ph="{...}" />
+            <marker date="1570311141461" expanded="true" signature="470:621" ph="{...}" />
+            <marker date="1570311141461" expanded="true" signature="508:548" ph="{...}" />
+            <marker date="1570311141461" expanded="true" signature="679:818" ph="{...}" />
+            <marker date="1570311141461" expanded="true" signature="746:797" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIContent.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="30">
+          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
           <folding>
             <marker date="1570305933581" expanded="false" signature="6:78" ph="..." />
             <marker date="1570305933581" expanded="true" signature="113:254" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/TextMessage.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <marker date="1570311907303" expanded="false" signature="6:78" ph="..." />
+            <marker date="1570311907303" expanded="true" signature="104:175" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIObject.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+          <folding>
+            <marker date="1570312341908" expanded="true" signature="6:92" ph="..." />
+            <marker date="1570312341908" expanded="true" signature="131:807" ph="{...}" />
+            <marker date="1570312341908" expanded="true" signature="466:782" ph="{...}" />
+            <marker date="1570312341908" expanded="true" signature="582:776" ph="{...}" />
+            <marker date="1570312341908" expanded="true" signature="697:766" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -506,32 +515,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerTextsManager.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIVerticalTable.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        <state relative-caret-position="465">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
           <folding>
-            <marker date="1570306768432" expanded="false" signature="6:97" ph="..." />
-            <marker date="1570306768432" expanded="true" signature="146:735" ph="{...}" />
-            <marker date="1570306768432" expanded="true" signature="383:722" ph="{...}" />
-            <marker date="1570306768432" expanded="true" signature="544:626" ph="/* var previous_message = MessagesList.Last(); ... */" />
+            <marker date="1570313241052" expanded="true" signature="6:78" ph="..." />
+            <marker date="1570313241052" expanded="true" signature="128:1893" ph="{...}" />
+            <marker date="1570313241052" expanded="true" signature="166:237" ph="{...}" />
+            <marker date="1570313241052" expanded="true" signature="286:414" ph="{...}" />
+            <marker date="1570313241052" expanded="true" signature="329:408" ph="{...}" />
+            <marker date="1570313241052" expanded="true" signature="700:1811" ph="{...}" />
+            <marker date="1570313241052" expanded="true" signature="861:1087" ph="{...}" />
+            <marker date="1570313241052" expanded="true" signature="924:1077" ph="{...}" />
+            <marker date="1570313241052" expanded="true" signature="1115:1649" ph="{...}" />
+            <marker date="1570313241052" expanded="true" signature="1849:1870" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIVerticalTable.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerText.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+        <state relative-caret-position="135">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
           <folding>
-            <marker date="1570309831727" expanded="true" signature="6:97" ph="..." />
-            <marker date="1570309831727" expanded="true" signature="143:941" ph="{...}" />
-            <marker date="1570309831727" expanded="true" signature="184:255" ph="{...}" />
-            <marker date="1570309831727" expanded="true" signature="304:432" ph="{...}" />
-            <marker date="1570309831727" expanded="true" signature="347:426" ph="{...}" />
-            <marker date="1570309831727" expanded="true" signature="664:714" ph="{...}" />
-            <marker date="1570309831727" expanded="true" signature="796:859" ph="{...}" />
-            <marker date="1570309831727" expanded="true" signature="897:918" ph="{...}" />
+            <marker date="1570311500937" expanded="true" signature="6:91" ph="..." />
+            <marker date="1570311500937" expanded="true" signature="132:534" ph="{...}" />
+            <marker date="1570311500937" expanded="true" signature="183:311" ph="{...}" />
+            <marker date="1570311500937" expanded="true" signature="226:305" ph="{...}" />
+            <marker date="1570311500937" expanded="true" signature="462:515" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerTextsManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <marker date="1570313186817" expanded="false" signature="6:97" ph="..." />
+            <marker date="1570313186817" expanded="true" signature="153:792" ph="{...}" />
+            <marker date="1570313186817" expanded="true" signature="390:779" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Tests/MessengerTester.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding>
+            <marker date="1570313468937" expanded="true" signature="6:92" ph="..." />
+            <marker date="1570313468937" expanded="true" signature="164:812" ph="{...}" />
+            <marker date="1570313468937" expanded="true" signature="316:655" ph="{...}" />
+            <marker date="1570313468937" expanded="true" signature="373:649" ph="{...}" />
+            <marker date="1570313468937" expanded="true" signature="702:810" ph="{...}" />
           </folding>
         </state>
       </provider>
