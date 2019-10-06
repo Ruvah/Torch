@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2375dbe4-fd0e-4c2b-ba9f-b4f8e7694d58" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/ReadOnlyInInspector.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/ReadOnlyInInspector.cs.meta" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,19 +12,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/MessengerApp.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <marker date="1570295028024" expanded="false" signature="6:78" ph="..." />
-                <marker date="1570295028024" expanded="true" signature="117:213" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerTextsManager.cs">
           <provider selected="true" editor-type-id="text-editor">
@@ -95,36 +79,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/Outcome.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-              <folding>
-                <marker date="1570359378089" expanded="true" signature="6:78" ph="..." />
-                <marker date="1570359378089" expanded="true" signature="125:782" ph="{...}" />
-                <marker date="1570359378089" expanded="true" signature="290:454" ph="{...}" />
-                <marker date="1570359378089" expanded="true" signature="319:389" ph="{...}" />
-                <marker date="1570359378089" expanded="true" signature="402:448" ph="{...}" />
-                <marker date="1570359378089" expanded="true" signature="543:780" ph="{...}" />
-                <marker date="1570359378089" expanded="true" signature="578:658" ph="{...}" />
-                <marker date="1570359378089" expanded="true" signature="671:743" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/Interactable.cs">
+        <entry file="file://$PROJECT_DIR$/Assets/StoryTree/TreeEditorWindow.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+            <state relative-caret-position="255">
+              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
               <folding>
-                <marker date="1570359918015" expanded="true" signature="6:92" ph="..." />
-                <marker date="1570359918015" expanded="true" signature="135:462" ph="{...}" />
-                <marker date="1570359918015" expanded="true" signature="247:354" ph="{...}" />
-                <marker date="1570359918015" expanded="true" signature="295:348" ph="{...}" />
-                <marker date="1570359918015" expanded="true" signature="403:460" ph="{...}" />
+                <marker date="1570364662404" expanded="false" signature="6:97" ph="..." />
+                <marker date="1570364662404" expanded="true" signature="143:406" ph="{...}" />
+                <marker date="1570364662404" expanded="true" signature="231:368" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -192,12 +155,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/TextMessage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIDockArea.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIContent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/Interactable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UIWindow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/Outcome.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/WindowSystem/UISlotContent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/UIMessengerTextsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Tests/MessengerTester.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/StoryTree/TreeEditorWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/Texting/MessengerApp.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -224,6 +186,7 @@
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/Tests/MessengerTester.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/Outcome.cs" />
         <option value="$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/Interactable.cs" />
+        <option value="$PROJECT_DIR$/Assets/StoryTree/TreeEditorWindow.cs" />
       </list>
     </option>
   </component>
@@ -288,12 +251,12 @@
       <option name="presentableId" value="Default" />
       <updated>1570287459252</updated>
       <workItem from="1570287464977" duration="17876000" />
-      <workItem from="1570359073949" duration="1002000" />
+      <workItem from="1570359073949" duration="1963000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18878000" />
+    <option name="totallyTimeSpent" value="19839000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -548,29 +511,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-          <folding>
-            <marker date="1570359378089" expanded="true" signature="6:78" ph="..." />
-            <marker date="1570359378089" expanded="true" signature="125:782" ph="{...}" />
-            <marker date="1570359378089" expanded="true" signature="290:454" ph="{...}" />
-            <marker date="1570359378089" expanded="true" signature="319:389" ph="{...}" />
-            <marker date="1570359378089" expanded="true" signature="402:448" ph="{...}" />
-            <marker date="1570359378089" expanded="true" signature="543:780" ph="{...}" />
-            <marker date="1570359378089" expanded="true" signature="578:658" ph="{...}" />
-            <marker date="1570359378089" expanded="true" signature="671:743" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/_Whatsup/Scripts/CommonCode/Interactable.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/StoryTree/TreeEditorWindow.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
           <folding>
-            <marker date="1570359918015" expanded="true" signature="6:92" ph="..." />
-            <marker date="1570359918015" expanded="true" signature="135:462" ph="{...}" />
-            <marker date="1570359918015" expanded="true" signature="247:354" ph="{...}" />
-            <marker date="1570359918015" expanded="true" signature="295:348" ph="{...}" />
-            <marker date="1570359918015" expanded="true" signature="403:460" ph="{...}" />
+            <marker date="1570364662404" expanded="false" signature="6:97" ph="..." />
+            <marker date="1570364662404" expanded="true" signature="143:406" ph="{...}" />
+            <marker date="1570364662404" expanded="true" signature="231:368" ph="{...}" />
           </folding>
         </state>
       </provider>
