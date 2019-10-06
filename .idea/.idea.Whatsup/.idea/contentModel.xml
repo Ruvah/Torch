@@ -9,8 +9,12 @@
         <e p="_Whatsup" t="Include">
           <e p="Scripts" t="Include">
             <e p="CommonCode" t="Include">
+              <e p="Attributes" t="Include">
+                <e p="ReadOnlyInInspector.cs" t="Include" />
+              </e>
+              <e p="Interactable.cs" t="Include" />
               <e p="MonoBehaviourSingleton.cs" t="Include" />
-              <e p="ReadOnlyInInspector.cs" t="Include" />
+              <e p="Outcome.cs" t="Include" />
             </e>
             <e p="Managers" t="Include">
               <e p="HudManager.cs" t="Include" />
