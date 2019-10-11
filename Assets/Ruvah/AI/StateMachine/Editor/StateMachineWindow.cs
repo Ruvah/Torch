@@ -15,29 +15,26 @@ namespace Ruvah.AI.Statemachine
 
         // -- FIELDS
 
-        private static StateMachine StateMachine;
-
         // -- METHODS
 
-        [MenuItem("Tools/Ruvah/StateMachine")]
+        //[MenuItem("Tools/Ruvah/StateMachine")]
         static void Init()
         {
             NodeEditorWindow window = (StateMachineWindow) EditorWindow.GetWindow(typeof(StateMachineWindow));
             window.Show();
         }
 
-        static void Init(StateMachine state_machine)
+        public static void Init(StateMachine state_machine)
         {
-            StateMachine = state_machine;
+            EditedSystem = state_machine;
             Init();
         }
 
 
         protected override void CreateContextMenu()
         {
-            ContextMenu.AddItem(new GUIContent("CreateTask"), false, ContextMenuOption,
+            ContextMenu.AddItem(new GUIContent("AddState"), false, ContextMenuOption,
                 StateMachineContextOptions.CreateState);
-
         }
 
         protected override void ContextMenuOption(object option)
@@ -47,9 +44,18 @@ namespace Ruvah.AI.Statemachine
             {
                 case StateMachineContextOptions.CreateState:
                 {
+                    CreateState();
                     break;
                 }
             }
+        }
+
+        private void CreateState()
+        {
+            var new_state = new StateNode();
+            new_state.WindowRect.center = MousePos;
+            EditedSystem.NodesList.Add(new_state);
+            EditorUtility.SetDirty(EditedSystem);
         }
     }
     

@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class StateNode : BaseNode
 {
+    public StateNode()
+    {
+        WindowTitle = "New State";
+    }
+    
     public override void DrawConnections()
     {
         throw new System.NotImplementedException();

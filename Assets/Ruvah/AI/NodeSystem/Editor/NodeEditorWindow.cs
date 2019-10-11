@@ -19,6 +19,9 @@ namespace Ruvah.NodeSystem
         private static Color BackgroundColor = new Color(0.3f,0.3f,0.3f);
         private static Texture2D BackgroundTexture;
 
+        protected static NodeSystem EditedSystem;
+        protected Vector2 MousePos { get; private set; }
+
         // -- METHODS
         
 
@@ -32,9 +35,14 @@ namespace Ruvah.NodeSystem
             
         }
 
+        protected virtual void ContextMenuOption(object option)
+        {
+            
+        }
+
         private void HandleMouseClick(Vector2 mouse_pos)
         {
-            foreach (var node in NodesList)
+            foreach (var node in EditedSystem.NodesList)
             {
                 if (node.WindowRect.Contains(mouse_pos))
                 {
@@ -46,9 +54,15 @@ namespace Ruvah.NodeSystem
             ContextMenu.ShowAsContext();
         }
 
-        protected virtual void ContextMenuOption(object option)
+        private void DrawNodes()
         {
-            
+            BeginWindows();
+            for (var i = 0; i < EditedSystem.NodesList.Count; i++)
+            {
+                var node = EditedSystem.NodesList[i];
+                node.WindowRect = GUI.Window(i, node.WindowRect, node.DrawWindow, node.WindowTitle);
+            }
+            EndWindows();
         }
 
         // -- UNITY
@@ -58,11 +72,14 @@ namespace Ruvah.NodeSystem
             ContentRect.max = maxSize;
             GUI.DrawTexture(ContentRect,BackgroundTexture, ScaleMode.StretchToFill);
             
+            DrawNodes();
+            
             //TODO: refactor this
             Event current_event = Event.current;
+            MousePos = current_event.mousePosition;
             if (current_event.isMouse && current_event.button == 1)
             {
-                HandleMouseClick(current_event.mousePosition);
+                HandleMouseClick(MousePos);
                 current_event.Use();
             }
         }

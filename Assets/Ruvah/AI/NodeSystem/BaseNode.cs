@@ -6,7 +6,7 @@ using UnityEditor;
 namespace Ruvah.NodeSystem
 {
 
-    public abstract class BaseNode : ScriptableObject
+    public abstract class BaseNode
     {
         // -- FIELDS
         
@@ -45,9 +45,9 @@ namespace Ruvah.NodeSystem
 
         public abstract void DrawConnections();
 
-        public virtual void DrawWindow()
+        public virtual void DrawWindow(int id)
         {
-            WindowTitle = EditorGUILayout.TextField("Title", WindowTitle);
+            GUI.DragWindow();
         }
         
         public virtual void OnClicked(Vector2 mouse_pos)
