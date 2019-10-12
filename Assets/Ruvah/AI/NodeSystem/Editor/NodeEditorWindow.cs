@@ -8,50 +8,78 @@ namespace Ruvah.NodeSystem
 
     public abstract class NodeEditorWindow : EditorWindow
     {
+        public enum NodeEditorState
+        {
+            None,
+            CreatingConnection,
+            Count
+        }
+        
         // -- FIELDS
         
         
         protected GenericMenu ContextMenu = new GenericMenu();
+        protected GenericMenu NodeMenu = new GenericMenu();
 
-        private BaseNode SelectedNode;
+        protected NodeEditorState CurrentState;
+
+        private NodeObject SelectedObject;
         
-        private Rect ContentRect = new Rect();
+        private Rect ContentRect;
         private static Color BackgroundColor = new Color(0.3f,0.3f,0.3f);
         private static Texture2D BackgroundTexture;
 
         protected static NodeSystem EditedSystem;
         protected Vector2 MousePos { get; private set; }
 
-        // -- METHODS
-        
 
-        public static void DrawNodeConnection(Vector2 start, Vector2 end)
-        {
-            Handles.DrawLine(start,end);
-        }
+        // -- METHODS
 
         protected virtual void CreateContextMenu()
         {
             
         }
 
-        protected virtual void ContextMenuOption(object option)
+        protected virtual void CreateNodeMenu()
         {
-            
+            NodeMenu.AddItem(new GUIContent("CreateTransition"), false, StartConnection);
         }
 
-        private void HandleMouseClick(Vector2 mouse_pos)
+        private void HandleMouseClick(Event e)
         {
             foreach (var node in EditedSystem.NodesList)
             {
-                if (node.WindowRect.Contains(mouse_pos))
+                if (node.WindowRect.Contains(MousePos))
                 {
-                    node.OnClicked(mouse_pos);
-                    break;
+                    SelectNode(node);
+                    node.OnClicked(MousePos);
+                    switch (e.button)
+                    {
+                        case 0:
+                        {
+
+                            break;
+                        }
+                        case 1:
+                        {
+                            NodeMenu.ShowAsContext();
+                            break;
+                        }
+
+                    }
+                    return;
                 }
             }
-            
-            ContextMenu.ShowAsContext();
+
+            if (CurrentState == NodeEditorState.CreatingConnection)
+            {
+                SelectedObject = null;
+                CurrentState = NodeEditorState.None;
+            }
+            if (e.button == 1)
+            {
+                ContextMenu.ShowAsContext();
+            }
         }
 
         private void DrawNodes()
@@ -65,6 +93,59 @@ namespace Ruvah.NodeSystem
             EndWindows();
         }
 
+        private void MouseEvent()
+        {
+            Event current_event = Event.current;
+            MousePos = current_event.mousePosition;
+            if (current_event.isMouse)
+            {
+                HandleMouseClick(current_event);
+            }
+        }
+
+        private void StartConnection()
+        {
+            CurrentState = NodeEditorState.CreatingConnection;
+            var connection = new BaseConnection
+            {
+                From = SelectedObject as BaseNode
+            };
+            SelectedObject = connection;
+        }
+
+        private void SelectNode(BaseNode node)
+        {
+            switch (CurrentState)
+            {
+                case NodeEditorState.None:
+                {
+                    SelectedObject = node;
+                    break;
+                }
+
+                case NodeEditorState.CreatingConnection:
+                {
+                    var connection = SelectedObject as BaseConnection;
+                    connection.To = node;
+                    connection.Apply();
+                    CurrentState = NodeEditorState.None;
+                    break;
+                }
+            }
+        }
+
+        private void DrawConnections()
+        {
+            foreach (var node in EditedSystem.NodesList)
+            {
+                node.DrawConnections();
+            }
+            if (CurrentState == NodeEditorState.CreatingConnection)
+            {
+                (SelectedObject as BaseConnection)?.DrawToMouse(MousePos);
+            }
+        }
+
         // -- UNITY
 
         private void OnGUI()
@@ -72,16 +153,9 @@ namespace Ruvah.NodeSystem
             ContentRect.max = maxSize;
             GUI.DrawTexture(ContentRect,BackgroundTexture, ScaleMode.StretchToFill);
             
+            MouseEvent();
+            DrawConnections();
             DrawNodes();
-            
-            //TODO: refactor this
-            Event current_event = Event.current;
-            MousePos = current_event.mousePosition;
-            if (current_event.isMouse && current_event.button == 1)
-            {
-                HandleMouseClick(MousePos);
-                current_event.Use();
-            }
         }
 
         protected virtual void Awake()
@@ -90,7 +164,13 @@ namespace Ruvah.NodeSystem
             BackgroundTexture.SetPixel(0, 0, BackgroundColor);
             BackgroundTexture.Apply();
             CreateContextMenu();
+            CreateNodeMenu();
+        }
+
+        private void OnInspectorUpdate()
+        {
+            Repaint();
         }
     }
-    
+
 }

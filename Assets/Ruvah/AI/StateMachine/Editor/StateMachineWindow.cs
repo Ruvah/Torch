@@ -17,7 +17,7 @@ namespace Ruvah.AI.Statemachine
 
         // -- METHODS
 
-        //[MenuItem("Tools/Ruvah/StateMachine")]
+        
         static void Init()
         {
             NodeEditorWindow window = (StateMachineWindow) EditorWindow.GetWindow(typeof(StateMachineWindow));
@@ -37,7 +37,7 @@ namespace Ruvah.AI.Statemachine
                 StateMachineContextOptions.CreateState);
         }
 
-        protected override void ContextMenuOption(object option)
+        protected void ContextMenuOption(object option)
         {
             var selected_option = (StateMachineContextOptions) option;
             switch (selected_option)

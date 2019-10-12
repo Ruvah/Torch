@@ -6,15 +6,17 @@ using UnityEditor;
 namespace Ruvah.NodeSystem
 {
 
-    public abstract class BaseNode
+    public abstract class BaseNode : NodeObject
     {
         // -- FIELDS
         
         public Rect WindowRect = new Rect(0,0,200,100);
         public string WindowTitle;
-            
-        // -- METHODS
+        public List<BaseConnection> FromConnections = new List<BaseConnection>();
+        public List<BaseConnection> ToConnections = new List<BaseConnection>();
 
+        // -- METHODS
+        
 
         public Vector2 GetMiddle()
         {
@@ -25,7 +27,7 @@ namespace Ruvah.NodeSystem
             return middle;
         }
 
-        public Vector2 GetBottom()
+        public Vector2 GetTop()
         {
             Vector2 bottom;
             bottom.x = WindowRect.x + WindowRect.width * 0.5f;
@@ -34,7 +36,7 @@ namespace Ruvah.NodeSystem
             return bottom;
         }
         
-        public Vector2 GetTop()
+        public Vector2 GetBottom()
         {
             Vector2 top;
             top.x = WindowRect.x + WindowRect.width * 0.5f;
@@ -43,16 +45,34 @@ namespace Ruvah.NodeSystem
             return top;
         }
 
-        public abstract void DrawConnections();
+        public virtual void DrawConnections()
+        {
+            foreach (var from_connection in FromConnections)
+            {
+                from_connection.Draw(); 
+            }
+        }
 
         public virtual void DrawWindow(int id)
         {
             GUI.DragWindow();
         }
-        
+
         public virtual void OnClicked(Vector2 mouse_pos)
         {
             
+        }
+
+        public virtual void AddConnection(BaseConnection connection)
+        {
+            if (connection.From == this)
+            {
+                FromConnections.Add(connection);
+            }
+            else
+            {
+                ToConnections.Add(connection);
+            }
         }
 
 
