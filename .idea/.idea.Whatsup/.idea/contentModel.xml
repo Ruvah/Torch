@@ -37,13 +37,17 @@
         <e p="Ruvah" t="Include">
           <e p="AI" t="Include">
             <e p="NodeSystem" t="Include">
+              <e p="BaseConnection.cs" t="Include" />
               <e p="BaseNode.cs" t="Include" />
               <e p="Editor" t="Include">
                 <e p="NodeEditorWindow.cs" t="Include" />
               </e>
+              <e p="NodeObject.cs" t="Include" />
+              <e p="NodeSystem.cs" t="Include" />
             </e>
             <e p="StateMachine" t="Include">
               <e p="Editor" t="Include">
+                <e p="StateMachineInspector.cs" t="Include" />
                 <e p="StateMachineWindow.cs" t="Include" />
               </e>
               <e p="StateMachine.cs" t="Include" />

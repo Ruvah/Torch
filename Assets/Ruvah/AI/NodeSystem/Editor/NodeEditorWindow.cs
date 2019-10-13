@@ -6,6 +6,7 @@ using UnityEngine;
 namespace Ruvah.NodeSystem
 {
 
+    [Serializable]
     public abstract class NodeEditorWindow : EditorWindow
     {
         public enum NodeEditorState
@@ -18,20 +19,19 @@ namespace Ruvah.NodeSystem
         // -- FIELDS
         
         
-        protected GenericMenu ContextMenu = new GenericMenu();
-        protected GenericMenu NodeMenu = new GenericMenu();
+        public GenericMenu ContextMenu = new GenericMenu();
+        public GenericMenu NodeMenu = new GenericMenu();
 
-        protected NodeEditorState CurrentState;
+        public NodeEditorState CurrentState;
 
-        private NodeObject SelectedObject;
+        public NodeObject SelectedObject;
         
-        private Rect ContentRect;
-        private static Color BackgroundColor = new Color(0.3f,0.3f,0.3f);
-        private static Texture2D BackgroundTexture;
-
-        protected static NodeSystem EditedSystem;
+        public Rect ContentRect;
+        public Color BackgroundColor = new Color(0.3f,0.3f,0.3f);
+        public Texture2D BackgroundTexture;
+        
+        public NodeSystem EditedSystem;
         protected Vector2 MousePos { get; private set; }
-
 
         // -- METHODS
 

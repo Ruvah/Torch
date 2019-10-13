@@ -1,14 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Ruvah.NodeSystem;
 using UnityEngine;
 
-public class StateNode : BaseNode
+namespace Ruvah.AI.Statemachine
 {
-    public StateNode()
+    [Serializable]
+    public class StateNode : BaseNode
     {
-        WindowTitle = "New State";
+        public StateNode()
+        {
+            WindowTitle = "New State";
+        }
     }
-    
-
 }

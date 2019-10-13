@@ -1,19 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 namespace Ruvah.NodeSystem
 {
+    [Serializable]
     public class BaseConnection : NodeObject
     {
         public BaseNode From;
         public BaseNode To;
 
-        private static float TriangleSideLength = 5f;
+        private static float TriangleSideLength = 10f;
         private static Shader Shader = Shader.Find("Hidden/Internal-Colored");
         private Material Material = new Material(Shader);
-        private Vector2[] Triangle = new Vector2[3];
+        private Vector2[] Arrow = new Vector2[3];
 
         public BaseConnection()
         {
@@ -46,6 +48,7 @@ namespace Ruvah.NodeSystem
             GL.End();
             GL.PopMatrix();
 
+            DrawTriangle();
         }
 
         public void DrawToMouse(Vector2 mouse_pos)
@@ -61,9 +64,40 @@ namespace Ruvah.NodeSystem
             GL.PopMatrix();
         }
 
-        private void CreateTriangle()
+        private void CreateArrow()
         {
             Vector2 middle = (From.GetBottom() + To.GetTop()) * 0.5f;
+
+            var point = middle;
+            point.x += TriangleSideLength;
+
+            var bottom_wing = middle;
+            bottom_wing.x -= TriangleSideLength * 0.5f;
+            bottom_wing.y += TriangleSideLength;
+
+            var top_wing = middle;
+            top_wing.x -= TriangleSideLength * 0.5f;
+            top_wing.y -= TriangleSideLength;
+
+            Arrow[0] = point;
+            Arrow[1] = bottom_wing;
+            Arrow[2] = top_wing;
+        }
+
+        private void DrawTriangle()
+        {
+            CreateArrow();
+            GL.PushMatrix();
+            Material.SetPass(0);
+            GL.LoadPixelMatrix();
+            GL.Color(Color.white);
+            GL.Begin(GL.TRIANGLES);
+            for (int i = 0; i < Arrow.Length; i++)
+            {
+                GL.Vertex(Arrow[i]);
+            }
+            GL.End();
+            GL.PopMatrix();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Ruvah.NodeSystem;
 using UnityEditor;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 namespace Ruvah.AI.Statemachine
 {
+    [Serializable]
     public class StateMachineWindow : NodeEditorWindow
     {
         public enum StateMachineContextOptions
@@ -17,17 +19,12 @@ namespace Ruvah.AI.Statemachine
 
         // -- METHODS
 
-        
-        static void Init()
-        {
-            NodeEditorWindow window = (StateMachineWindow) EditorWindow.GetWindow(typeof(StateMachineWindow));
-            window.Show();
-        }
-
         public static void Init(StateMachine state_machine)
         {
-            EditedSystem = state_machine;
-            Init();
+            StateMachineWindow window = (StateMachineWindow) EditorWindow.GetWindow(typeof(StateMachineWindow));
+            window.EditedSystem = state_machine;
+            EditorUtility.SetDirty(window);
+            window.Show();
         }
 
 

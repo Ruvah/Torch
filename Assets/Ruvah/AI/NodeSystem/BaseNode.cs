@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
 namespace Ruvah.NodeSystem
 {
-
+    [Serializable]
     public abstract class BaseNode : NodeObject
     {
         // -- FIELDS
