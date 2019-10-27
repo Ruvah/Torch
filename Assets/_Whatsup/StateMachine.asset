@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5072470053177215536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e966440ba6cf243bbfe9ca321a86df, type: 3}
+  m_Name: New State
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 108
+    y: 223
+    width: 200
+    height: 100
+  WindowTitle: New State
+  FromConnections: []
+  ToConnections:
+  - {fileID: 8865806293635087770}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,3 +34,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081aaedd936d3734c8fb334ac1f4ccca, type: 3}
   m_Name: StateMachine
   m_EditorClassIdentifier: 
+  NodesList:
+  - {fileID: 5490609643683374853}
+  - {fileID: -5072470053177215536}
+  - {fileID: 4527531004070970908}
+--- !u!114 &4527531004070970908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e966440ba6cf243bbfe9ca321a86df, type: 3}
+  m_Name: New State
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 428
+    y: 91
+    width: 100
+    height: 50
+  WindowTitle: New State
+  FromConnections: []
+  ToConnections: []
+--- !u!114 &5490609643683374853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e966440ba6cf243bbfe9ca321a86df, type: 3}
+  m_Name: New State
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 84
+    y: 54
+    width: 200
+    height: 100
+  WindowTitle: New State
+  FromConnections:
+  - {fileID: 8865806293635087770}
+  ToConnections: []
+--- !u!114 &8865806293635087770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9c82e2401e99d48a55ea2c392b9045, type: 3}
+  m_Name: New State_to_New State
+  m_EditorClassIdentifier: 
+  From: {fileID: 5490609643683374853}
+  To: {fileID: -5072470053177215536}

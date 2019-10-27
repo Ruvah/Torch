@@ -30,6 +30,7 @@ namespace Ruvah.AI.Statemachine
 
         protected override void CreateContextMenu()
         {
+            base.CreateContextMenu();
             ContextMenu.AddItem(new GUIContent("AddState"), false, ContextMenuOption,
                 StateMachineContextOptions.CreateState);
         }
@@ -49,8 +50,11 @@ namespace Ruvah.AI.Statemachine
 
         private void CreateState()
         {
-            var new_state = new StateNode();
+            var new_state = CreateInstance<StateNode>();
             new_state.WindowRect.center = MousePos;
+            new_state.name = new_state.WindowTitle;
+//            new_state.hideFlags = HideFlags.HideInHierarchy;
+            AssetDatabase.AddObjectToAsset(new_state, EditedSystem);
             EditedSystem.NodesList.Add(new_state);
             EditorUtility.SetDirty(EditedSystem);
         }

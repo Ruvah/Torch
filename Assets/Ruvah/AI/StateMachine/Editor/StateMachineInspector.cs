@@ -9,6 +9,7 @@ namespace Ruvah.AI.Statemachine
     public class StateMachineInspector : Editor {  
         public override void OnInspectorGUI()
         {      
+            base.OnInspectorGUI();
             if(GUILayout.Button("Open Editor"))
             {
                 StateMachineWindow.Init(target as StateMachine);

@@ -7,11 +7,11 @@ using UnityEditor;
 namespace Ruvah.NodeSystem
 {
     [Serializable]
-    public abstract class BaseNode : NodeObject
+    public class BaseNode : NodeObject
     {
         // -- FIELDS
         
-        public Rect WindowRect = new Rect(0,0,200,100);
+        public Rect WindowRect = new Rect(0,0,100,50);
         public string WindowTitle;
         public List<BaseConnection> FromConnections = new List<BaseConnection>();
         public List<BaseConnection> ToConnections = new List<BaseConnection>();

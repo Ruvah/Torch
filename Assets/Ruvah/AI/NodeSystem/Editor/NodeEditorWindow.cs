@@ -5,8 +5,7 @@ using UnityEngine;
 
 namespace Ruvah.NodeSystem
 {
-
-    [Serializable]
+    
     public abstract class NodeEditorWindow : EditorWindow
     {
         public enum NodeEditorState
@@ -31,17 +30,24 @@ namespace Ruvah.NodeSystem
         public Texture2D BackgroundTexture;
         
         public NodeSystem EditedSystem;
+        public float Zoom = 1f;
+        public float MinZoom = 1f;
+        public float MaxZoom = 3f;
+
+        private const float ScrollDeltaModifier = 0.1f;
+        
         protected Vector2 MousePos { get; private set; }
 
         // -- METHODS
 
         protected virtual void CreateContextMenu()
         {
-            
+            ContextMenu = new GenericMenu();
         }
 
         protected virtual void CreateNodeMenu()
         {
+            NodeMenu = new GenericMenu();
             NodeMenu.AddItem(new GUIContent("CreateTransition"), false, StartConnection);
         }
 
@@ -81,6 +87,15 @@ namespace Ruvah.NodeSystem
                 ContextMenu.ShowAsContext();
             }
         }
+        
+        protected void Initialize()
+        {
+            BackgroundTexture = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+            BackgroundTexture.SetPixel(0, 0, BackgroundColor);
+            BackgroundTexture.Apply();
+            CreateContextMenu();
+            CreateNodeMenu();
+        }
 
         private void DrawNodes()
         {
@@ -97,19 +112,23 @@ namespace Ruvah.NodeSystem
         {
             Event current_event = Event.current;
             MousePos = current_event.mousePosition;
-            if (current_event.isMouse)
+            if (current_event.isScrollWheel)
+            {
+                Zoom -= Time.deltaTime * current_event.delta.y * ScrollDeltaModifier;
+                Zoom = Mathf.Clamp(Zoom, MinZoom, MaxZoom);
+            }
+            else if (current_event.isMouse)
             {
                 HandleMouseClick(current_event);
+                
             }
         }
 
         private void StartConnection()
         {
             CurrentState = NodeEditorState.CreatingConnection;
-            var connection = new BaseConnection
-            {
-                From = SelectedObject as BaseNode
-            };
+            var connection = CreateInstance<BaseConnection>();
+            connection.From = SelectedObject as BaseNode;
             SelectedObject = connection;
         }
 
@@ -129,6 +148,9 @@ namespace Ruvah.NodeSystem
                     connection.To = node;
                     connection.Apply();
                     CurrentState = NodeEditorState.None;
+                    connection.name = $"{connection.From.name}_to_{connection.To.name}";
+                    AssetDatabase.AddObjectToAsset(connection, EditedSystem);
+                    EditorUtility.SetDirty(EditedSystem);
                     break;
                 }
             }
@@ -143,8 +165,15 @@ namespace Ruvah.NodeSystem
             if (CurrentState == NodeEditorState.CreatingConnection)
             {
                 var connection = SelectedObject as BaseConnection;
-                connection?.DrawToMouse(connection.From.GetBottom(), MousePos);
+                connection.DrawToMouse(connection.From.GetBottom(), MousePos);
             }
+        }
+
+        private void Draw()
+        {
+            MouseEvent();
+            DrawConnections();
+            DrawNodes();
         }
 
         // -- UNITY
@@ -154,23 +183,27 @@ namespace Ruvah.NodeSystem
             ContentRect.max = maxSize;
             GUI.DrawTexture(ContentRect,BackgroundTexture, ScaleMode.StretchToFill);
             
-            MouseEvent();
-            DrawConnections();
-            DrawNodes();
-        }
-
-        protected virtual void Awake()
-        {
-            BackgroundTexture = new Texture2D(1, 1, TextureFormat.RGBA32, false);
-            BackgroundTexture.SetPixel(0, 0, BackgroundColor);
-            BackgroundTexture.Apply();
-            CreateContextMenu();
-            CreateNodeMenu();
+            Matrix4x4 before = GUI.matrix;
+            //Scale my gui matrix
+            Matrix4x4 Translation = Matrix4x4.TRS(new Vector3(0,25,0),Quaternion.identity,Vector3.one);
+            Matrix4x4 Scale = Matrix4x4.Scale(Zoom * Vector3.one);
+            GUI.matrix = Translation*Scale*Translation.inverse;
+ 
+            //Draw my zoomed GUI
+            Draw();
+ 
+            //reset the matrix
+            GUI.matrix = before;
         }
 
         private void OnInspectorUpdate()
         {
             Repaint();
+        }
+
+        private void OnEnable()
+        {
+            Initialize();
         }
     }
 

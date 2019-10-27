@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class NodeObject
+public class NodeObject : ScriptableObject
 {
 
 }

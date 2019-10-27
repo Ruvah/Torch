@@ -11,28 +11,18 @@ namespace Ruvah.NodeSystem
     {
         public BaseNode From;
         public BaseNode To;
+        private Shader Shader;
+        private Material Material;
+        private bool IsInitialized;
 
         private static float TriangleSideLength = 10f;
         private static float LineWidth = 3f;
-        private static Shader Shader = Shader.Find("Hidden/Internal-Colored");
-        private Material Material = new Material(Shader);
+
         private Vector2[] Arrow = new Vector2[3];
         private Vector2[] Line = new Vector2[4];
 
         // -- METHODS
-        
-        public BaseConnection()
-        {
-            Material.hideFlags = HideFlags.HideAndDontSave;
-            // Turn on alpha blending
-            Material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            Material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            // Turn backface culling off
-            Material.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
-            // Turn off depth writes
-            Material.SetInt("_ZWrite", 0);
-        }
-        
+
         public void Apply()
         {
             From.AddConnection(this);
@@ -41,6 +31,11 @@ namespace Ruvah.NodeSystem
         
         public void Draw(Vector2 from, Vector2 to)
         {
+            if (!IsInitialized)
+            {
+                Initialize();
+            }
+            
             var half_width = LineWidth * 0.5f;
             Vector2 line = to - from;
             float angle = Mathf.Atan(line.y / line.x);
@@ -74,6 +69,26 @@ namespace Ruvah.NodeSystem
         public void DrawToMouse(Vector2 from, Vector2 mouse_pos)
         {
             Draw(from, mouse_pos);
+        }
+
+        public void Contains(Vector2 mouse_pos)
+        {
+            
+        }
+
+        public void Initialize()
+        {
+            Shader = Shader.Find("Hidden/Internal-Colored");
+            Material = new Material(Shader);
+            Material.hideFlags = HideFlags.HideAndDontSave;
+            // Turn on alpha blending
+            Material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            Material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            // Turn backface culling off
+            Material.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
+            // Turn off depth writes
+            Material.SetInt("_ZWrite", 0);
+            IsInitialized = true;
         }
 
         private void CalculateArrowHead(Vector2 from, Vector2 to)

@@ -12,3 +12,302 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081aaedd936d3734c8fb334ac1f4ccca, type: 3}
   m_Name: StateMachine
   m_EditorClassIdentifier: 
+  NodesList:
+  - WindowRect:
+      serializedVersion: 2
+      x: 116
+      y: 22
+      width: 200
+      height: 100
+    WindowTitle: New State
+    FromConnections:
+    - From:
+        WindowRect:
+          serializedVersion: 2
+          x: 29
+          y: 23
+          width: 200
+          height: 100
+        WindowTitle: New State
+        FromConnections:
+        - From:
+            WindowRect:
+              serializedVersion: 2
+              x: 29
+              y: 23
+              width: 200
+              height: 100
+            WindowTitle: New State
+            FromConnections:
+            - From:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 29
+                  y: 23
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+              To:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 140
+                  y: 263
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+            ToConnections: []
+          To:
+            WindowRect:
+              serializedVersion: 2
+              x: 140
+              y: 263
+              width: 200
+              height: 100
+            WindowTitle: New State
+            FromConnections: []
+            ToConnections:
+            - From:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 29
+                  y: 23
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+              To:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 140
+                  y: 263
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+        ToConnections: []
+      To:
+        WindowRect:
+          serializedVersion: 2
+          x: 140
+          y: 263
+          width: 200
+          height: 100
+        WindowTitle: New State
+        FromConnections: []
+        ToConnections:
+        - From:
+            WindowRect:
+              serializedVersion: 2
+              x: 29
+              y: 23
+              width: 200
+              height: 100
+            WindowTitle: New State
+            FromConnections:
+            - From:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 29
+                  y: 23
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+              To:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 140
+                  y: 263
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+            ToConnections: []
+          To:
+            WindowRect:
+              serializedVersion: 2
+              x: 140
+              y: 263
+              width: 200
+              height: 100
+            WindowTitle: New State
+            FromConnections: []
+            ToConnections:
+            - From:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 29
+                  y: 23
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+              To:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 140
+                  y: 263
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+    ToConnections: []
+  - WindowRect:
+      serializedVersion: 2
+      x: 66
+      y: 185
+      width: 200
+      height: 100
+    WindowTitle: New State
+    FromConnections: []
+    ToConnections:
+    - From:
+        WindowRect:
+          serializedVersion: 2
+          x: 29
+          y: 23
+          width: 200
+          height: 100
+        WindowTitle: New State
+        FromConnections:
+        - From:
+            WindowRect:
+              serializedVersion: 2
+              x: 29
+              y: 23
+              width: 200
+              height: 100
+            WindowTitle: New State
+            FromConnections:
+            - From:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 29
+                  y: 23
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+              To:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 140
+                  y: 263
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+            ToConnections: []
+          To:
+            WindowRect:
+              serializedVersion: 2
+              x: 140
+              y: 263
+              width: 200
+              height: 100
+            WindowTitle: New State
+            FromConnections: []
+            ToConnections:
+            - From:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 29
+                  y: 23
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+              To:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 140
+                  y: 263
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+        ToConnections: []
+      To:
+        WindowRect:
+          serializedVersion: 2
+          x: 140
+          y: 263
+          width: 200
+          height: 100
+        WindowTitle: New State
+        FromConnections: []
+        ToConnections:
+        - From:
+            WindowRect:
+              serializedVersion: 2
+              x: 29
+              y: 23
+              width: 200
+              height: 100
+            WindowTitle: New State
+            FromConnections:
+            - From:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 29
+                  y: 23
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+              To:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 140
+                  y: 263
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+            ToConnections: []
+          To:
+            WindowRect:
+              serializedVersion: 2
+              x: 140
+              y: 263
+              width: 200
+              height: 100
+            WindowTitle: New State
+            FromConnections: []
+            ToConnections:
+            - From:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 29
+                  y: 23
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
+              To:
+                WindowRect:
+                  serializedVersion: 2
+                  x: 140
+                  y: 263
+                  width: 200
+                  height: 100
+                WindowTitle: New State
+                FromConnections: []
+                ToConnections: []
