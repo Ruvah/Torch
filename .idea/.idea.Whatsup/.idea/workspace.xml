@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2375dbe4-fd0e-4c2b-ba9f-b4f8e7694d58" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Whatsup/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseConnection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseNode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/Editor/NodeEditorWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/Editor/NodeEditorWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/Editor/StateMachineWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/Editor/StateMachineWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/StateNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/StateNode.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,59 +15,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/Editor/NodeEditorWindow.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+            <state relative-caret-position="314">
+              <caret line="128" column="28" selection-start-line="128" selection-start-column="28" selection-end-line="128" selection-end-column="28" />
               <folding>
-                <marker date="1570973041628" expanded="false" signature="6:85" ph="..." />
-                <marker date="1570973041628" expanded="true" signature="113:4706" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="193:4703" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="235:323" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="910:943" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="992:1102" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="1150:2128" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="1217:1825" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="1287:1811" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="1427:1765" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="1894:2014" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="2045:2118" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="2162:2486" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="2267:2450" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="2521:2758" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="2671:2748" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="2798:3049" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="2932:2997" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="3097:3659" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="3141:3649" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="3699:4015" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="3766:3834" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="3902:4005" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="4066:4305" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="4345:4612" ph="{...}" />
-                <marker date="1570973041628" expanded="true" signature="4654:4697" ph="{...}" />
+                <marker date="1572195591356" expanded="false" signature="6:85" ph="..." />
+                <marker date="1572195591356" expanded="true" signature="113:4778" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="193:4775" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="235:323" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="910:943" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="992:1102" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="1150:2128" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="1217:1825" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="1287:1811" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="1427:1765" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="1894:2014" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="2045:2118" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="2162:2486" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="2267:2450" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="2521:2758" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="2671:2748" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="2798:3049" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="2932:2997" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="3097:3659" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="3141:3649" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="3699:4087" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="3766:3834" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="3902:4077" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="4138:4377" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="4417:4684" ph="{...}" />
+                <marker date="1572195591356" expanded="true" signature="4726:4769" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseConnection.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="162">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
               <folding>
-                <marker date="1570972627191" expanded="true" signature="6:111" ph="..." />
-                <marker date="1570972627191" expanded="true" signature="139:2922" ph="{...}" />
-                <marker date="1570972627191" expanded="true" signature="205:2920" ph="{...}" />
-                <marker date="1570972627191" expanded="true" signature="545:1049" ph="{...}" />
-                <marker date="1570972627191" expanded="true" signature="1086:1180" ph="{...}" />
-                <marker date="1570972627191" expanded="true" signature="1216:1556" ph="{...}" />
-                <marker date="1570972627191" expanded="true" signature="1608:1916" ph="{...}" />
-                <marker date="1570972627191" expanded="true" signature="1952:2497" ph="{...}" />
-                <marker date="1570972627191" expanded="true" signature="2534:2914" ph="{...}" />
-                <marker date="1570972627191" expanded="true" signature="2789:2854" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="6:111" ph="..." />
+                <marker date="1572198083009" expanded="true" signature="139:4325" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="205:4323" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="670:1174" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="1211:1305" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="1365:2330" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="2396:2451" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="2518:3860" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="2696:2754" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="3556:3850" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="3922:4317" ph="{...}" />
+                <marker date="1572198083009" expanded="true" signature="4192:4257" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -81,7 +78,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeSystem.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="90">
               <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
               <folding>
                 <marker date="1570972240629" expanded="true" signature="6:92" ph="..." />
@@ -95,8 +92,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/Editor/StateMachineWindow.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+            <state relative-caret-position="255">
+              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
               <folding>
                 <marker date="1570972949409" expanded="true" signature="6:135" ph="..." />
                 <marker date="1570972949409" expanded="true" signature="168:1557" ph="{...}" />
@@ -116,22 +113,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseNode.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="15">
+              <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
               <folding>
-                <marker date="1570972627101" expanded="true" signature="6:111" ph="..." />
-                <marker date="1570972627101" expanded="true" signature="139:1890" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="208:1888" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="565:771" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="804:983" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="1027:1194" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="1241:1391" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="1312:1381" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="1439:1489" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="1547:1580" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="1650:1880" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="1701:1778" ph="{...}" />
-                <marker date="1570972627101" expanded="true" signature="1795:1870" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="6:111" ph="..." />
+                <marker date="1572195591736" expanded="true" signature="139:1931" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="208:1929" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="565:771" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="804:983" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="1027:1194" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="1241:1432" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="1307:1422" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="1480:1530" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="1588:1621" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="1691:1921" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="1742:1819" ph="{...}" />
+                <marker date="1572195591736" expanded="true" signature="1836:1911" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -140,8 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/StateNode.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+            <state relative-caret-position="75">
+              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
               <folding>
                 <marker date="1570972626717" expanded="true" signature="6:116" ph="..." />
                 <marker date="1570972626717" expanded="true" signature="149:308" ph="{...}" />
@@ -155,8 +152,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeObject.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="60">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <marker date="1570972240489" expanded="true" signature="6:92" ph="..." />
                 <marker date="1570972240489" expanded="true" signature="132:137" ph="{...}" />
@@ -233,11 +230,11 @@
         <option value="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeConnection.cs" />
         <option value="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseNode.cs" />
-        <option value="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseConnection.cs" />
         <option value="$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/StateNode.cs" />
         <option value="$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/Editor/StateMachineWindow.cs" />
         <option value="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/Editor/NodeEditorWindow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseConnection.cs" />
       </list>
     </option>
   </component>
@@ -284,10 +281,10 @@
       <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="2604">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="18272">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="2604" />
+      <option name="pid" value="18272" />
       <option name="userSelectedPid" value="false" />
       <method v="2" />
     </configuration>
@@ -308,11 +305,13 @@
       <workItem from="1570826131594" duration="3921000" />
       <workItem from="1570890854955" duration="8786000" />
       <workItem from="1570969106269" duration="3210000" />
+      <workItem from="1570983967078" duration="1273000" />
+      <workItem from="1572192398729" duration="5090000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46277000" />
+    <option name="totallyTimeSpent" value="52640000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -333,7 +332,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -589,7 +588,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeSystem.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="90">
           <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
           <folding>
             <marker date="1570972240629" expanded="true" signature="6:92" ph="..." />
@@ -599,75 +598,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeObject.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <marker date="1570972240489" expanded="true" signature="6:92" ph="..." />
-            <marker date="1570972240489" expanded="true" signature="132:137" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseConnection.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <marker date="1570972627191" expanded="true" signature="6:111" ph="..." />
-            <marker date="1570972627191" expanded="true" signature="139:2922" ph="{...}" />
-            <marker date="1570972627191" expanded="true" signature="205:2920" ph="{...}" />
-            <marker date="1570972627191" expanded="true" signature="545:1049" ph="{...}" />
-            <marker date="1570972627191" expanded="true" signature="1086:1180" ph="{...}" />
-            <marker date="1570972627191" expanded="true" signature="1216:1556" ph="{...}" />
-            <marker date="1570972627191" expanded="true" signature="1608:1916" ph="{...}" />
-            <marker date="1570972627191" expanded="true" signature="1952:2497" ph="{...}" />
-            <marker date="1570972627191" expanded="true" signature="2534:2914" ph="{...}" />
-            <marker date="1570972627191" expanded="true" signature="2789:2854" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseNode.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <marker date="1570972627101" expanded="true" signature="6:111" ph="..." />
-            <marker date="1570972627101" expanded="true" signature="139:1890" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="208:1888" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="565:771" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="804:983" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="1027:1194" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="1241:1391" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="1312:1381" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="1439:1489" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="1547:1580" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="1650:1880" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="1701:1778" ph="{...}" />
-            <marker date="1570972627101" expanded="true" signature="1795:1870" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/StateNode.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding>
-            <marker date="1570972626717" expanded="true" signature="6:116" ph="..." />
-            <marker date="1570972626717" expanded="true" signature="149:308" ph="{...}" />
-            <marker date="1570972626717" expanded="true" signature="208:306" ph="{...}" />
-            <marker date="1570972626717" expanded="true" signature="241:300" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/Editor/StateMachineWindow.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+        <state relative-caret-position="255">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
           <folding>
             <marker date="1570972949409" expanded="true" signature="6:135" ph="..." />
             <marker date="1570972949409" expanded="true" signature="168:1557" ph="{...}" />
@@ -683,37 +617,104 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/StateMachine/StateNode.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <marker date="1570972626717" expanded="true" signature="6:116" ph="..." />
+            <marker date="1570972626717" expanded="true" signature="149:308" ph="{...}" />
+            <marker date="1570972626717" expanded="true" signature="208:306" ph="{...}" />
+            <marker date="1570972626717" expanded="true" signature="241:300" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/NodeObject.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <marker date="1570972240489" expanded="true" signature="6:92" ph="..." />
+            <marker date="1570972240489" expanded="true" signature="132:137" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseNode.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+          <folding>
+            <marker date="1572195591736" expanded="true" signature="6:111" ph="..." />
+            <marker date="1572195591736" expanded="true" signature="139:1931" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="208:1929" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="565:771" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="804:983" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="1027:1194" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="1241:1432" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="1307:1422" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="1480:1530" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="1588:1621" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="1691:1921" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="1742:1819" ph="{...}" />
+            <marker date="1572195591736" expanded="true" signature="1836:1911" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/Editor/NodeEditorWindow.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+        <state relative-caret-position="314">
+          <caret line="128" column="28" selection-start-line="128" selection-start-column="28" selection-end-line="128" selection-end-column="28" />
           <folding>
-            <marker date="1570973041628" expanded="false" signature="6:85" ph="..." />
-            <marker date="1570973041628" expanded="true" signature="113:4706" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="193:4703" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="235:323" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="910:943" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="992:1102" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="1150:2128" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="1217:1825" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="1287:1811" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="1427:1765" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="1894:2014" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="2045:2118" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="2162:2486" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="2267:2450" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="2521:2758" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="2671:2748" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="2798:3049" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="2932:2997" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="3097:3659" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="3141:3649" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="3699:4015" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="3766:3834" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="3902:4005" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="4066:4305" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="4345:4612" ph="{...}" />
-            <marker date="1570973041628" expanded="true" signature="4654:4697" ph="{...}" />
+            <marker date="1572195591356" expanded="false" signature="6:85" ph="..." />
+            <marker date="1572195591356" expanded="true" signature="113:4778" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="193:4775" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="235:323" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="910:943" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="992:1102" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="1150:2128" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="1217:1825" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="1287:1811" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="1427:1765" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="1894:2014" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="2045:2118" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="2162:2486" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="2267:2450" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="2521:2758" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="2671:2748" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="2798:3049" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="2932:2997" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="3097:3659" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="3141:3649" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="3699:4087" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="3766:3834" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="3902:4077" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="4138:4377" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="4417:4684" ph="{...}" />
+            <marker date="1572195591356" expanded="true" signature="4726:4769" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Ruvah/AI/NodeSystem/BaseConnection.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <marker date="1572198083009" expanded="true" signature="6:111" ph="..." />
+            <marker date="1572198083009" expanded="true" signature="139:4325" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="205:4323" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="670:1174" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="1211:1305" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="1365:2330" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="2396:2451" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="2518:3860" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="2696:2754" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="3556:3850" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="3922:4317" ph="{...}" />
+            <marker date="1572198083009" expanded="true" signature="4192:4257" ph="{...}" />
           </folding>
         </state>
       </provider>

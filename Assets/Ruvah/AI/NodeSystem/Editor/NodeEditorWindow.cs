@@ -142,7 +142,8 @@ namespace Ruvah.NodeSystem
             }
             if (CurrentState == NodeEditorState.CreatingConnection)
             {
-                (SelectedObject as BaseConnection)?.DrawToMouse(MousePos);
+                var connection = SelectedObject as BaseConnection;
+                connection?.DrawToMouse(connection.From.GetBottom(), MousePos);
             }
         }
 

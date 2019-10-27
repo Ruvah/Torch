@@ -48,9 +48,9 @@ namespace Ruvah.NodeSystem
 
         public virtual void DrawConnections()
         {
-            foreach (var from_connection in FromConnections)
+            foreach (var connection in FromConnections)
             {
-                from_connection.Draw(); 
+                connection.Draw(connection.From.GetBottom(), connection.To.GetTop()); 
             }
         }
 
