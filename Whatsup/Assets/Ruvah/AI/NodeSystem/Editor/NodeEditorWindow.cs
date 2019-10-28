@@ -16,14 +16,24 @@ namespace Ruvah.NodeSystem
         }
         
         // -- FIELDS
+
         
+        //General
+        public NodeObject SelectedObject
+        {
+            get => _SelectedObject;
+            set
+            {
+                _SelectedObject = value;
+                Selection.activeObject = _SelectedObject;
+            }
+        }
         
         public GenericMenu ContextMenu = new GenericMenu();
         public GenericMenu NodeMenu = new GenericMenu();
 
         public NodeEditorState CurrentState;
 
-        public NodeObject SelectedObject;
         
         public Rect ContentRect;
         public Color BackgroundColor = new Color(0.3f,0.3f,0.3f);
@@ -34,9 +44,14 @@ namespace Ruvah.NodeSystem
         public float MinZoom = 1f;
         public float MaxZoom = 3f;
 
-        private const float ScrollDeltaModifier = 0.1f;
-        
         protected Vector2 MousePos { get; private set; }
+
+        private const float ScrollDeltaModifier = 0.1f;
+        private NodeObject _SelectedObject;
+        private List<BaseConnection> Connections = new List<BaseConnection>();
+
+        //ConnectionCreationState
+        private BaseConnection ConnectionInCreation;
 
         // -- METHODS
 
@@ -57,13 +72,11 @@ namespace Ruvah.NodeSystem
             {
                 if (node.WindowRect.Contains(MousePos))
                 {
-                    SelectNode(node);
-                    node.OnClicked(MousePos);
                     switch (e.button)
                     {
                         case 0:
                         {
-
+                            LeftClickNode(node);
                             break;
                         }
                         case 1:
@@ -77,10 +90,31 @@ namespace Ruvah.NodeSystem
                 }
             }
 
+            foreach (var connection in Connections)
+            {
+                if (connection.Contains(MousePos))
+                {
+                    switch (e.button)
+                    {
+                        case 0:
+                        {
+                            LeftClickConnection(connection);
+                            break;
+                        }
+                        case 1:
+                        {
+                            
+                            break;
+                        }
+
+                    }
+                    return;
+                }
+            }
+
             if (CurrentState == NodeEditorState.CreatingConnection)
             {
-                SelectedObject = null;
-                CurrentState = NodeEditorState.None;
+                CancelConnectionCreation();
             }
             if (e.button == 1)
             {
@@ -95,8 +129,33 @@ namespace Ruvah.NodeSystem
             BackgroundTexture.Apply();
             CreateContextMenu();
             CreateNodeMenu();
+            Connections.Clear();
+            foreach (var node in EditedSystem.NodesList)
+            {
+                Connections.AddRange(node.Connections);
+            }
         }
 
+        private void CompleteConnectionCreation(BaseNode to_node)
+        {
+            ConnectionInCreation.To = to_node;
+            ConnectionInCreation.From.AddConnection(ConnectionInCreation);
+            ConnectionInCreation.name = $"{ConnectionInCreation.From.name}_to_{to_node.name}";
+            Connections.Add(ConnectionInCreation);
+            AssetDatabase.AddObjectToAsset(ConnectionInCreation, ConnectionInCreation.From);
+            EditorUtility.SetDirty(EditedSystem);
+            ConnectionInCreation = null;
+            SelectedObject = ConnectionInCreation;
+            CurrentState = NodeEditorState.None;
+        }
+
+        private void CancelConnectionCreation()
+        {
+            DestroyImmediate(ConnectionInCreation);
+            ConnectionInCreation = null;
+            CurrentState = NodeEditorState.None;
+        }
+        
         private void DrawNodes()
         {
             BeginWindows();
@@ -129,10 +188,10 @@ namespace Ruvah.NodeSystem
             CurrentState = NodeEditorState.CreatingConnection;
             var connection = CreateInstance<BaseConnection>();
             connection.From = SelectedObject as BaseNode;
-            SelectedObject = connection;
+            ConnectionInCreation = connection;
         }
 
-        private void SelectNode(BaseNode node)
+        private void LeftClickNode(BaseNode node)
         {
             switch (CurrentState)
             {
@@ -144,13 +203,25 @@ namespace Ruvah.NodeSystem
 
                 case NodeEditorState.CreatingConnection:
                 {
-                    var connection = SelectedObject as BaseConnection;
-                    connection.To = node;
-                    connection.Apply();
-                    CurrentState = NodeEditorState.None;
-                    connection.name = $"{connection.From.name}_to_{connection.To.name}";
-                    AssetDatabase.AddObjectToAsset(connection, EditedSystem);
-                    EditorUtility.SetDirty(EditedSystem);
+                    CompleteConnectionCreation(node);
+                    break;
+                }
+            }
+        }
+
+        private void LeftClickConnection(BaseConnection connection)
+        {
+            switch (CurrentState)
+            {
+                case NodeEditorState.None:
+                {
+                    SelectedObject = connection;
+                    break;
+                }
+
+                case NodeEditorState.CreatingConnection:
+                {
+                    CancelConnectionCreation();
                     break;
                 }
             }
@@ -164,8 +235,7 @@ namespace Ruvah.NodeSystem
             }
             if (CurrentState == NodeEditorState.CreatingConnection)
             {
-                var connection = SelectedObject as BaseConnection;
-                connection.DrawToMouse(connection.From.GetBottom(), MousePos);
+                ConnectionInCreation.DrawToMouse(ConnectionInCreation.From.GetBottom(), MousePos);
             }
         }
 

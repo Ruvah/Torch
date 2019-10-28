@@ -22,12 +22,7 @@ namespace Ruvah.NodeSystem
         private Vector2[] Line = new Vector2[4];
 
         // -- METHODS
-
-        public void Apply()
-        {
-            From.AddConnection(this);
-            To.AddConnection(this);
-        }
+        
         
         public void Draw(Vector2 from, Vector2 to)
         {
@@ -46,10 +41,10 @@ namespace Ruvah.NodeSystem
             var left = (Vector2)(rotation * (Vector2.left * half_width));
             var right = (Vector2)(rotation * (Vector2.right * half_width));
 
-            Line[0] = from + left;
-            Line[1] = from + right;
-            Line[2] = to + right;
-            Line[3] = to + left;
+            Line[0] = to + left;
+            Line[1] = from + left;
+            Line[2] = from + right;
+            Line[3] = to + right;
            
             GL.PushMatrix();
             Material.SetPass(0);
@@ -71,9 +66,10 @@ namespace Ruvah.NodeSystem
             Draw(from, mouse_pos);
         }
 
-        public void Contains(Vector2 mouse_pos)
+        public bool Contains(Vector2 mouse_pos)
         {
-            
+            var rect = new Rectangle2D(Line);
+            return rect.Contains(mouse_pos);
         }
 
         public void Initialize()

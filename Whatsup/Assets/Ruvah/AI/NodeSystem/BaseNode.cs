@@ -13,8 +13,7 @@ namespace Ruvah.NodeSystem
         
         public Rect WindowRect = new Rect(0,0,100,50);
         public string WindowTitle;
-        public List<BaseConnection> FromConnections = new List<BaseConnection>();
-        public List<BaseConnection> ToConnections = new List<BaseConnection>();
+        public List<BaseConnection> Connections = new List<BaseConnection>();
 
         // -- METHODS
         
@@ -48,7 +47,7 @@ namespace Ruvah.NodeSystem
 
         public virtual void DrawConnections()
         {
-            foreach (var connection in FromConnections)
+            foreach (var connection in Connections)
             {
                 connection.Draw(connection.From.GetBottom(), connection.To.GetTop()); 
             }
@@ -59,21 +58,9 @@ namespace Ruvah.NodeSystem
             GUI.DragWindow();
         }
 
-        public virtual void OnClicked(Vector2 mouse_pos)
-        {
-            
-        }
-
         public virtual void AddConnection(BaseConnection connection)
         {
-            if (connection.From == this)
-            {
-                FromConnections.Add(connection);
-            }
-            else
-            {
-                ToConnections.Add(connection);
-            }
+            Connections.Add(connection);
         }
 
 
