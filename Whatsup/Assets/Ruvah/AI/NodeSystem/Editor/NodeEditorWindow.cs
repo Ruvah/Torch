@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Ruvah.NodeSystem
 {
-    
+
     public abstract class NodeEditorWindow : EditorWindow
     {
         public enum NodeEditorState
@@ -14,11 +14,11 @@ namespace Ruvah.NodeSystem
             CreatingConnection,
             Count
         }
-        
+
         // -- FIELDS
 
-        
-        //General
+
+        // -- General
         public NodeObject SelectedObject
         {
             get => _SelectedObject;
@@ -28,17 +28,10 @@ namespace Ruvah.NodeSystem
                 Selection.activeObject = _SelectedObject;
             }
         }
-        
+
         public GenericMenu ContextMenu = new GenericMenu();
         public GenericMenu NodeMenu = new GenericMenu();
-
         public NodeEditorState CurrentState;
-
-        
-        public Rect ContentRect;
-        public Color BackgroundColor = new Color(0.3f,0.3f,0.3f);
-        public Texture2D BackgroundTexture;
-        
         public NodeSystem EditedSystem;
         public float Zoom = 1f;
         public float MinZoom = 1f;
@@ -50,8 +43,13 @@ namespace Ruvah.NodeSystem
         private NodeObject _SelectedObject;
         private List<BaseConnection> Connections = new List<BaseConnection>();
 
-        //ConnectionCreationState
+        // -- Window
+
+        private EditorGUISplitView HorizontalSplitView = new EditorGUISplitView (EditorGUISplitView.Direction.Horizontal);
+
+        // -- ConnectionCreationState
         private BaseConnection ConnectionInCreation;
+        private BaseNode ConnectionFromNode;
 
         // -- METHODS
 
@@ -72,6 +70,7 @@ namespace Ruvah.NodeSystem
             {
                 if (node.WindowRect.Contains(MousePos))
                 {
+                    SelectedObject = node;
                     switch (e.button)
                     {
                         case 0:
@@ -94,6 +93,7 @@ namespace Ruvah.NodeSystem
             {
                 if (connection.Contains(MousePos))
                 {
+                    SelectedObject = connection;
                     switch (e.button)
                     {
                         case 0:
@@ -103,7 +103,7 @@ namespace Ruvah.NodeSystem
                         }
                         case 1:
                         {
-                            
+
                             break;
                         }
 
@@ -121,32 +121,17 @@ namespace Ruvah.NodeSystem
                 ContextMenu.ShowAsContext();
             }
         }
-        
+
         protected void Initialize()
         {
-            BackgroundTexture = new Texture2D(1, 1, TextureFormat.RGBA32, false);
-            BackgroundTexture.SetPixel(0, 0, BackgroundColor);
-            BackgroundTexture.Apply();
             CreateContextMenu();
             CreateNodeMenu();
             Connections.Clear();
+            if (EditedSystem == null) { return; }
             foreach (var node in EditedSystem.NodesList)
             {
                 Connections.AddRange(node.Connections);
             }
-        }
-
-        private void CompleteConnectionCreation(BaseNode to_node)
-        {
-            ConnectionInCreation.To = to_node;
-            ConnectionInCreation.From.AddConnection(ConnectionInCreation);
-            ConnectionInCreation.name = $"{ConnectionInCreation.From.name}_to_{to_node.name}";
-            Connections.Add(ConnectionInCreation);
-            AssetDatabase.AddObjectToAsset(ConnectionInCreation, ConnectionInCreation.From);
-            EditorUtility.SetDirty(EditedSystem);
-            ConnectionInCreation = null;
-            SelectedObject = ConnectionInCreation;
-            CurrentState = NodeEditorState.None;
         }
 
         private void CancelConnectionCreation()
@@ -155,16 +140,22 @@ namespace Ruvah.NodeSystem
             ConnectionInCreation = null;
             CurrentState = NodeEditorState.None;
         }
-        
+
         private void DrawNodes()
         {
             BeginWindows();
             for (var i = 0; i < EditedSystem.NodesList.Count; i++)
             {
                 var node = EditedSystem.NodesList[i];
-                node.WindowRect = GUI.Window(i, node.WindowRect, node.DrawWindow, node.WindowTitle);
+                node.WindowRect = GUI.Window(i, node.WindowRect, DrawNodeWindow, node.WindowTitle);
             }
             EndWindows();
+        }
+
+        private void DrawNodeWindow(int id)
+        {
+            var node = EditedSystem.NodesList[id];
+            node.DrawContent(HorizontalSplitView.View2Rect);
         }
 
         private void MouseEvent()
@@ -179,7 +170,6 @@ namespace Ruvah.NodeSystem
             else if (current_event.isMouse)
             {
                 HandleMouseClick(current_event);
-                
             }
         }
 
@@ -187,8 +177,27 @@ namespace Ruvah.NodeSystem
         {
             CurrentState = NodeEditorState.CreatingConnection;
             var connection = CreateInstance<BaseConnection>();
-            connection.From = SelectedObject as BaseNode;
             ConnectionInCreation = connection;
+            ConnectionFromNode = SelectedObject as BaseNode;
+        }
+
+
+        private void CompleteConnectionCreation(BaseNode to_node)
+        {
+            ConnectionInCreation.From = ConnectionFromNode;
+            ConnectionInCreation.To = to_node;
+            var created_connection = ConnectionFromNode.AddConnection(ConnectionInCreation);
+            if (created_connection == ConnectionInCreation)
+            {
+                ConnectionInCreation.name = $"{ConnectionInCreation.From.name}_to_{to_node.name}";
+                Connections.Add(ConnectionInCreation);
+                AssetDatabase.AddObjectToAsset(ConnectionInCreation, ConnectionInCreation.From);
+                EditorUtility.SetDirty(EditedSystem);
+            }
+            ConnectionInCreation = null;
+            ConnectionFromNode = null;
+            SelectedObject = created_connection;
+            CurrentState = NodeEditorState.None;
         }
 
         private void LeftClickNode(BaseNode node)
@@ -197,7 +206,7 @@ namespace Ruvah.NodeSystem
             {
                 case NodeEditorState.None:
                 {
-                    SelectedObject = node;
+
                     break;
                 }
 
@@ -215,7 +224,6 @@ namespace Ruvah.NodeSystem
             {
                 case NodeEditorState.None:
                 {
-                    SelectedObject = connection;
                     break;
                 }
 
@@ -235,35 +243,35 @@ namespace Ruvah.NodeSystem
             }
             if (CurrentState == NodeEditorState.CreatingConnection)
             {
-                ConnectionInCreation.DrawToMouse(ConnectionInCreation.From.GetBottom(), MousePos);
+                ConnectionInCreation.DrawToMouse(ConnectionFromNode.GetBottom(), MousePos);
             }
         }
 
-        private void Draw()
+        private void DrawNodeView()
         {
+            Matrix4x4 before = GUI.matrix;
+
+            Matrix4x4 Translation = Matrix4x4.TRS(new Vector3(0,25,0),Quaternion.identity,Vector3.one);
+            Matrix4x4 Scale = Matrix4x4.Scale(Zoom * Vector3.one);
+            GUI.matrix = Translation*Scale*Translation.inverse;
+
             MouseEvent();
             DrawConnections();
             DrawNodes();
+
+            GUI.matrix = before;
+
         }
 
         // -- UNITY
 
         private void OnGUI()
         {
-            ContentRect.max = maxSize;
-            GUI.DrawTexture(ContentRect,BackgroundTexture, ScaleMode.StretchToFill);
-            
-            Matrix4x4 before = GUI.matrix;
-            //Scale my gui matrix
-            Matrix4x4 Translation = Matrix4x4.TRS(new Vector3(0,25,0),Quaternion.identity,Vector3.one);
-            Matrix4x4 Scale = Matrix4x4.Scale(Zoom * Vector3.one);
-            GUI.matrix = Translation*Scale*Translation.inverse;
- 
-            //Draw my zoomed GUI
-            Draw();
- 
-            //reset the matrix
-            GUI.matrix = before;
+            HorizontalSplitView.BeginSplitView();
+
+            HorizontalSplitView.Split ();
+            DrawNodeView();
+            HorizontalSplitView.EndSplitView();
         }
 
         private void OnInspectorUpdate()

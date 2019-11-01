@@ -10,13 +10,13 @@ namespace Ruvah.NodeSystem
     public class BaseNode : NodeObject
     {
         // -- FIELDS
-        
+
         public Rect WindowRect = new Rect(0,0,100,50);
         public string WindowTitle;
         public List<BaseConnection> Connections = new List<BaseConnection>();
 
         // -- METHODS
-        
+
 
         public Vector2 GetMiddle()
         {
@@ -35,7 +35,7 @@ namespace Ruvah.NodeSystem
 
             return bottom;
         }
-        
+
         public Vector2 GetBottom()
         {
             Vector2 top;
@@ -49,18 +49,44 @@ namespace Ruvah.NodeSystem
         {
             foreach (var connection in Connections)
             {
-                connection.Draw(connection.From.GetBottom(), connection.To.GetTop()); 
+                connection.Draw(connection.From.GetBottom(), connection.To.GetTop());
             }
         }
 
-        public virtual void DrawWindow(int id)
+        public virtual void DrawContent(Rect area)
         {
             GUI.DragWindow();
         }
 
-        public virtual void AddConnection(BaseConnection connection)
+        public virtual BaseConnection AddConnection(BaseConnection connection)
         {
-            Connections.Add(connection);
+            if (!TryGetConnection(connection, out var added_connection))
+            {
+                added_connection = connection;
+                Connections.Add(added_connection);
+            }
+            else
+            {
+                DestroyImmediate(connection);
+            }
+            added_connection.AddTransition();
+            EditorUtility.SetDirty(added_connection);
+            return added_connection;
+        }
+
+        public virtual bool TryGetConnection(BaseConnection connection, out BaseConnection found_connection)
+        {
+            foreach (var base_connection in Connections)
+            {
+                if (base_connection.To == connection.To)
+                {
+                    found_connection = base_connection;
+                    return true;
+                }
+            }
+
+            found_connection = null;
+            return false;
         }
 
 
