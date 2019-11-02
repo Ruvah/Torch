@@ -34,7 +34,6 @@ namespace Ruvah.NodeSystem
         private Vector2[] Arrow = new Vector2[6];
         private Vector2[] Line = new Vector2[4];
         private List<Transition> Transitions = new List<Transition>();
-        private Rect LineRect;
 
         // -- METHODS
 

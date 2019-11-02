@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Ruvah.NodeSystem
@@ -37,19 +38,21 @@ namespace Ruvah.NodeSystem
         public float MinZoom = 1f;
         public float MaxZoom = 3f;
 
-        protected Vector2 MousePos { get; private set; }
+        protected Vector2 MousePosition { get; private set; }
 
         private const float ScrollDeltaModifier = 0.1f;
         private NodeObject _SelectedObject;
         private List<BaseConnection> Connections = new List<BaseConnection>();
 
-        // -- Window
+        private Rect NodeViewRect = new Rect(0,0,float.MaxValue,float.MaxValue);
 
-        private EditorGUISplitView HorizontalSplitView = new EditorGUISplitView (EditorGUISplitView.Direction.Horizontal);
-
-        // -- ConnectionCreationState
         private BaseConnection ConnectionInCreation;
         private BaseNode ConnectionFromNode;
+
+        [SerializeField]
+        private EditorGUISplitView HorizontalSplitView = new EditorGUISplitView (EditorGUISplitView.Direction.Horizontal);
+        [SerializeField]
+        private Vector2 NodeViewScrollPos = new Vector2(0.5f,0.5f);
 
         // -- METHODS
 
@@ -68,7 +71,7 @@ namespace Ruvah.NodeSystem
         {
             foreach (var node in EditedSystem.NodesList)
             {
-                if (node.WindowRect.Contains(MousePos))
+                if (node.WindowRect.Contains(MousePosition))
                 {
                     SelectedObject = node;
                     switch (e.button)
@@ -83,7 +86,6 @@ namespace Ruvah.NodeSystem
                             NodeMenu.ShowAsContext();
                             break;
                         }
-
                     }
                     return;
                 }
@@ -91,7 +93,7 @@ namespace Ruvah.NodeSystem
 
             foreach (var connection in Connections)
             {
-                if (connection.Contains(MousePos))
+                if (connection.Contains(MousePosition))
                 {
                     SelectedObject = connection;
                     switch (e.button)
@@ -116,7 +118,7 @@ namespace Ruvah.NodeSystem
             {
                 CancelConnectionCreation();
             }
-            if (e.button == 1)
+            if (e.button == 1 && HorizontalSplitView.View2Rect.Contains(MousePosition))
             {
                 ContextMenu.ShowAsContext();
             }
@@ -143,25 +145,23 @@ namespace Ruvah.NodeSystem
 
         private void DrawNodes()
         {
+            NodeViewScrollPos = GUI.BeginScrollView(HorizontalSplitView.View2Rect, NodeViewScrollPos, NodeViewRect);
             BeginWindows();
             for (var i = 0; i < EditedSystem.NodesList.Count; i++)
             {
                 var node = EditedSystem.NodesList[i];
-                node.WindowRect = GUI.Window(i, node.WindowRect, DrawNodeWindow, node.WindowTitle);
+                node.WindowRect = GUI.Window(i, node.WindowRect, node.DrawContent, node.WindowTitle);
+                node.WindowRect.x = Mathf.Clamp(node.WindowRect.x, 0, NodeViewRect.width - node.WindowRect.width);
+                node.WindowRect.y = Mathf.Clamp(node.WindowRect.y, 0, NodeViewRect.height - node.WindowRect.height);
             }
             EndWindows();
-        }
-
-        private void DrawNodeWindow(int id)
-        {
-            var node = EditedSystem.NodesList[id];
-            node.DrawContent(HorizontalSplitView.View2Rect);
+            GUI.EndScrollView();
         }
 
         private void MouseEvent()
         {
             Event current_event = Event.current;
-            MousePos = current_event.mousePosition;
+            MousePosition = current_event.mousePosition;
             if (current_event.isScrollWheel)
             {
                 Zoom -= Time.deltaTime * current_event.delta.y * ScrollDeltaModifier;
@@ -243,24 +243,23 @@ namespace Ruvah.NodeSystem
             }
             if (CurrentState == NodeEditorState.CreatingConnection)
             {
-                ConnectionInCreation.DrawToMouse(ConnectionFromNode.GetBottom(), MousePos);
+                ConnectionInCreation.DrawToMouse(ConnectionFromNode.GetBottom(), MousePosition);
             }
         }
 
         private void DrawNodeView()
         {
-            Matrix4x4 before = GUI.matrix;
-
-            Matrix4x4 Translation = Matrix4x4.TRS(new Vector3(0,25,0),Quaternion.identity,Vector3.one);
-            Matrix4x4 Scale = Matrix4x4.Scale(Zoom * Vector3.one);
-            GUI.matrix = Translation*Scale*Translation.inverse;
+//            Matrix4x4 before = GUI.matrix;
+//
+//            Matrix4x4 Translation = Matrix4x4.TRS(new Vector3(0,25,0),Quaternion.identity,Vector3.one);
+//            Matrix4x4 Scale = Matrix4x4.Scale(Zoom * Vector3.one);
+//            GUI.matrix = Translation*Scale*Translation.inverse;
 
             MouseEvent();
             DrawConnections();
             DrawNodes();
 
-            GUI.matrix = before;
-
+            //GUI.matrix = before;
         }
 
         // -- UNITY

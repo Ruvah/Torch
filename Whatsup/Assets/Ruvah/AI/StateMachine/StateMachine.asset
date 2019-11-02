@@ -1,5 +1,45 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7712154603500528552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e966440ba6cf243bbfe9ca321a86df, type: 3}
+  m_Name: New State
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  WindowTitle: New State
+  Connections: []
+--- !u!114 &-7000308204701254651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e966440ba6cf243bbfe9ca321a86df, type: 3}
+  m_Name: New State
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 1000
+    y: 215
+    width: 100
+    height: 50
+  WindowTitle: New State
+  Connections: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,4 +52,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081aaedd936d3734c8fb334ac1f4ccca, type: 3}
   m_Name: StateMachine
   m_EditorClassIdentifier: 
-  NodesList: []
+  NodesList:
+  - {fileID: -7712154603500528552}
+  - {fileID: -7000308204701254651}
+  - {fileID: 8120359174576649916}
+  - {fileID: 427941219710776558}
+--- !u!114 &427941219710776558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e966440ba6cf243bbfe9ca321a86df, type: 3}
+  m_Name: New State
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 2328
+    y: 146
+    width: 100
+    height: 50
+  WindowTitle: New State
+  Connections: []
+--- !u!114 &8120359174576649916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e966440ba6cf243bbfe9ca321a86df, type: 3}
+  m_Name: New State
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 8875
+    y: 124
+    width: 100
+    height: 50
+  WindowTitle: New State
+  Connections: []

@@ -53,7 +53,7 @@ namespace Ruvah.NodeSystem
             }
         }
 
-        public virtual void DrawContent(Rect area)
+        public virtual void DrawContent(int id)
         {
             GUI.DragWindow();
         }
