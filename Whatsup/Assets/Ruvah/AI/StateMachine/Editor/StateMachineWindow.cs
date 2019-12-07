@@ -51,7 +51,7 @@ namespace Ruvah.AI.Statemachine
         private void CreateState()
         {
             var new_state = CreateInstance<StateNode>();
-            new_state.WindowRect.center = MousePosition;
+            new_state.WindowRect.center = NodeViewMousePosition;
             new_state.name = new_state.WindowTitle;
 //            new_state.hideFlags = HideFlags.HideInHierarchy;
             AssetDatabase.AddObjectToAsset(new_state, EditedSystem);

@@ -39,20 +39,20 @@ namespace Ruvah.NodeSystem
         public float MaxZoom = 3f;
 
         protected Vector2 MousePosition { get; private set; }
+        protected Vector2 NodeViewMousePosition { get; private set; }
+        protected bool IsMouseInNodeView { get; private set; }
 
         private const float ScrollDeltaModifier = 0.1f;
         private NodeObject _SelectedObject;
         private List<BaseConnection> Connections = new List<BaseConnection>();
 
-        private Rect NodeViewRect = new Rect(0,0,float.MaxValue,float.MaxValue);
+        private Rect NodeViewRect = new Rect(0,0,10000,10000);
 
         private BaseConnection ConnectionInCreation;
         private BaseNode ConnectionFromNode;
 
-        [SerializeField]
-        private EditorGUISplitView HorizontalSplitView = new EditorGUISplitView (EditorGUISplitView.Direction.Horizontal);
-        [SerializeField]
-        private Vector2 NodeViewScrollPos = new Vector2(0.5f,0.5f);
+        [SerializeField] private EditorGUISplitView HorizontalSplitView = new EditorGUISplitView (EditorGUISplitView.Direction.Horizontal,0.3f);
+        [SerializeField] private Vector2 NodeViewScrollPos = Vector2.zero;
 
         // -- METHODS
 
@@ -69,9 +69,22 @@ namespace Ruvah.NodeSystem
 
         private void HandleMouseClick(Event e)
         {
+            if(IsMouseInNodeView)
+            {
+                HandleMousClickNodeView(e);
+            }
+
+            if (CurrentState == NodeEditorState.CreatingConnection)
+            {
+                CancelConnectionCreation();
+            }
+        }
+
+        private void HandleMousClickNodeView(Event e)
+        {
             foreach (var node in EditedSystem.NodesList)
             {
-                if (node.WindowRect.Contains(MousePosition))
+                if (node.WindowRect.Contains(NodeViewMousePosition))
                 {
                     SelectedObject = node;
                     switch (e.button)
@@ -114,11 +127,7 @@ namespace Ruvah.NodeSystem
                 }
             }
 
-            if (CurrentState == NodeEditorState.CreatingConnection)
-            {
-                CancelConnectionCreation();
-            }
-            if (e.button == 1 && HorizontalSplitView.View2Rect.Contains(MousePosition))
+            if (e.button == Constants.RightMouseButton)
             {
                 ContextMenu.ShowAsContext();
             }
@@ -145,7 +154,6 @@ namespace Ruvah.NodeSystem
 
         private void DrawNodes()
         {
-            NodeViewScrollPos = GUI.BeginScrollView(HorizontalSplitView.View2Rect, NodeViewScrollPos, NodeViewRect);
             BeginWindows();
             for (var i = 0; i < EditedSystem.NodesList.Count; i++)
             {
@@ -155,14 +163,15 @@ namespace Ruvah.NodeSystem
                 node.WindowRect.y = Mathf.Clamp(node.WindowRect.y, 0, NodeViewRect.height - node.WindowRect.height);
             }
             EndWindows();
-            GUI.EndScrollView();
         }
 
         private void MouseEvent()
         {
             Event current_event = Event.current;
             MousePosition = current_event.mousePosition;
-            if (current_event.isScrollWheel)
+            IsMouseInNodeView = HorizontalSplitView.View2Rect.Contains(MousePosition);
+            NodeViewMousePosition = MousePosition - HorizontalSplitView.View2Rect.position + NodeViewScrollPos;
+            if (IsMouseInNodeView && current_event.isScrollWheel)
             {
                 Zoom -= Time.deltaTime * current_event.delta.y * ScrollDeltaModifier;
                 Zoom = Mathf.Clamp(Zoom, MinZoom, MaxZoom);
@@ -241,25 +250,20 @@ namespace Ruvah.NodeSystem
             {
                 node.DrawConnections();
             }
-            if (CurrentState == NodeEditorState.CreatingConnection)
+            if (IsMouseInNodeView && CurrentState == NodeEditorState.CreatingConnection)
             {
-                ConnectionInCreation.DrawToMouse(ConnectionFromNode.GetBottom(), MousePosition);
+                ConnectionInCreation.DrawToMouse(ConnectionFromNode.GetBottom(), NodeViewMousePosition);
             }
         }
 
         private void DrawNodeView()
         {
-//            Matrix4x4 before = GUI.matrix;
-//
-//            Matrix4x4 Translation = Matrix4x4.TRS(new Vector3(0,25,0),Quaternion.identity,Vector3.one);
-//            Matrix4x4 Scale = Matrix4x4.Scale(Zoom * Vector3.one);
-//            GUI.matrix = Translation*Scale*Translation.inverse;
 
             MouseEvent();
+            NodeViewScrollPos = GUI.BeginScrollView(HorizontalSplitView.View2Rect, NodeViewScrollPos, NodeViewRect);
             DrawConnections();
             DrawNodes();
-
-            //GUI.matrix = before;
+            GUI.EndScrollView();
         }
 
         // -- UNITY

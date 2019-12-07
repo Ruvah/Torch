@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
 using UnityEditor;
 
+[Serializable]
 public class EditorGUISplitView
 {
 
@@ -44,12 +45,10 @@ public class EditorGUISplitView
 		}
 	}
 
+	public const float HandleThickness = 2f;
 	public Vector2 ScrollPosition;
+	public Direction SplitDirection;
 
-
-	private const float HandleThickness = 2f;
-
-	private Direction SplitDirection;
 	private float SplitNormalizedPosition;
 	private bool Resize;
 	private Rect AvailableRect;
