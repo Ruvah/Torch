@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Ruvah.NodeSystem
 {
 
-    public abstract class NodeEditorWindow : EditorWindow
+    public abstract partial class NodeEditorWindow : EditorWindow
     {
         public enum NodeEditorState
         {
@@ -135,6 +135,7 @@ namespace Ruvah.NodeSystem
 
         protected void Initialize()
         {
+            InitializeVariablesView();
             CreateContextMenu();
             CreateNodeMenu();
             Connections.Clear();
@@ -271,7 +272,7 @@ namespace Ruvah.NodeSystem
         private void OnGUI()
         {
             HorizontalSplitView.BeginSplitView();
-
+            DrawVariablesView();
             HorizontalSplitView.Split ();
             DrawNodeView();
             HorizontalSplitView.EndSplitView();
