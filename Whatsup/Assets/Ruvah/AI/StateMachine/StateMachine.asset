@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7803908439712023488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f89a4694d815ae4481589009fc8e6cf, type: 3}
+  m_Name: New GameObject
+  m_EditorClassIdentifier: 
+  Value: {fileID: 0}
+--- !u!114 &-6709964648183775563
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02da19392b1af842881446b4324dc70, type: 3}
+  m_Name: New Int
+  m_EditorClassIdentifier: 
+  Value: 0
 --- !u!114 &-4604665983766063785
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23,7 +49,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b52ed4d963703c41808a429db33c942, type: 3}
-  m_Name: New Float
+  m_Name: yayeet
   m_EditorClassIdentifier: 
   Value: 0
 --- !u!114 &-3496917209795563819
@@ -74,7 +100,9 @@ MonoBehaviour:
   NodesList:
   - {fileID: -1634687143495164774}
   Variables:
+  - {fileID: -7803908439712023488}
   - {fileID: -4061875384705611966}
+  - {fileID: -6709964648183775563}
 --- !u!114 &1860344896601724245
 MonoBehaviour:
   m_ObjectHideFlags: 1

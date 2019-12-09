@@ -71,7 +71,7 @@ namespace Ruvah.AI.NodeSystem
             var field_name_rect = new Rect(rect.x, rect.y,rect.width * nameFieldWidth, EditorGUIUtility.singleLineHeight);
             var field_value_rect = new Rect(field_name_rect.x + field_name_rect.width + rect.width * nameValueSpaceWidth, rect.y,rect.width * valueFieldWidth,EditorGUIUtility.singleLineHeight);
 
-            if (is_focused)
+            if (is_active)
             {
                 container.name = EditorGUI.DelayedTextField(field_name_rect, container.name);
                 EditorUtility.SetDirty(EditedSystem);
