@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using Ruvah.NodeSystem.ParameterContainers;
+using Ruvah.AI.NodeSystem.ParameterContainers;
 using UnityEditor;
 using UnityEngine;
 using UnityEditorInternal;
 
-namespace Ruvah.NodeSystem
+namespace Ruvah.AI.NodeSystem
 {
     public partial class NodeEditorWindow
     {
@@ -121,7 +121,7 @@ namespace Ruvah.NodeSystem
         private void AddFloatVariable()
         {
             var container = CreateInstance<FloatContainer>();
-            container.Initialize(CreateNewVariableName("Float"), default);
+            container.Initialize(CreateNewVariableName("Float"), 0);
             container.hideFlags = HideFlags.HideInHierarchy;
             AssetDatabase.AddObjectToAsset(container, EditedSystem);
             EditedSystem.Variables.Add(container);

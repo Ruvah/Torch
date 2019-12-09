@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Ruvah.NodeSystem.ParameterContainers;
+using Ruvah.AI.NodeSystem.ParameterContainers;
 using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 using Object = System.Object;
 
-namespace Ruvah.NodeSystem
+namespace Ruvah.AI.NodeSystem
 {
     [Serializable]
     public class NodeSystem : ScriptableObject

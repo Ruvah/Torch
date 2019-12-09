@@ -13,6 +13,19 @@ MonoBehaviour:
   m_Name: New Float
   m_EditorClassIdentifier: Assembly-CSharp:Ruvah.NodeSystem.ParameterContainers:FloatContainer
   Value: 20.5
+--- !u!114 &-4061875384705611966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b52ed4d963703c41808a429db33c942, type: 3}
+  m_Name: New Float
+  m_EditorClassIdentifier: 
+  Value: 0
 --- !u!114 &-3496917209795563819
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26,6 +39,26 @@ MonoBehaviour:
   m_Name: New Int
   m_EditorClassIdentifier: Assembly-CSharp:Ruvah.NodeSystem.ParameterContainers:IntContainer
   Value: 3435
+--- !u!114 &-1634687143495164774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e966440ba6cf243bbfe9ca321a86df, type: 3}
+  m_Name: New State
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 104.899994
+    y: 134
+    width: 100
+    height: 50
+  WindowTitle: New State
+  Connections: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,11 +71,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081aaedd936d3734c8fb334ac1f4ccca, type: 3}
   m_Name: StateMachine
   m_EditorClassIdentifier: 
-  NodesList: []
+  NodesList:
+  - {fileID: -1634687143495164774}
   Variables:
-  - {fileID: -3496917209795563819}
-  - {fileID: -4604665983766063785}
-  - {fileID: 8905697885293260918}
+  - {fileID: -4061875384705611966}
+--- !u!114 &1860344896601724245
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:Ruvah.NodeSystem.ParameterContainers:FloatContainer
+  Value: 0
+--- !u!114 &5440532761244130813
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: New Int
+  m_EditorClassIdentifier: Assembly-CSharp:Ruvah.NodeSystem.ParameterContainers:IntContainer
+  Value: 0
+--- !u!114 &7632857039704172197
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: New Float
+  m_EditorClassIdentifier: Assembly-CSharp:Ruvah.NodeSystem.ParameterContainers:FloatContainer
+  Value: 0
 --- !u!114 &8905697885293260918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,3 +127,16 @@ MonoBehaviour:
   m_Name: New GameObject
   m_EditorClassIdentifier: Assembly-CSharp:Ruvah.NodeSystem.ParameterContainers:GameObjectContainer
   Value: {fileID: 7339331584353025330, guid: 45ae3d118f156b845b55e5451df4d154, type: 3}
+--- !u!114 &9118298788197107942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: New Float (1)
+  m_EditorClassIdentifier: Assembly-CSharp:Ruvah.NodeSystem.ParameterContainers:FloatContainer
+  Value: 0

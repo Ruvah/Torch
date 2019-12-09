@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Ruvah.NodeSystem;
+using Ruvah.AI.NodeSystem;
 using UnityEditor;
 using UnityEngine;
 

@@ -7,7 +7,7 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 
-namespace Ruvah.NodeSystem
+namespace Ruvah.AI.NodeSystem
 {
     [Serializable]
     public class Transition

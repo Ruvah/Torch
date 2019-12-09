@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 
-namespace Ruvah.NodeSystem
+namespace Ruvah.AI.NodeSystem
 {
 
     public abstract partial class NodeEditorWindow : EditorWindow

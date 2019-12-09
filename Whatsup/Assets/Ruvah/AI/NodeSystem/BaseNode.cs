@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Ruvah.NodeSystem
+namespace Ruvah.AI.NodeSystem
 {
     [Serializable]
     public class BaseNode : NodeObject
