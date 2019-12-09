@@ -106,7 +106,7 @@ namespace Ruvah.NodeSystem
 
             foreach (var connection in Connections)
             {
-                if (connection.Contains(MousePosition))
+                if (connection.Contains(NodeViewMousePosition))
                 {
                     SelectedObject = connection;
                     switch (e.button)
@@ -135,6 +135,11 @@ namespace Ruvah.NodeSystem
 
         protected void Initialize()
         {
+            if (Selection.activeObject is NodeSystem system)
+            {
+                EditedSystem = system;
+            }
+
             InitializeVariablesView();
             CreateContextMenu();
             CreateNodeMenu();

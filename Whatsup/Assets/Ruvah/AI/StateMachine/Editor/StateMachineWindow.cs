@@ -19,10 +19,9 @@ namespace Ruvah.AI.Statemachine
 
         // -- METHODS
 
-        public static void Init(StateMachine state_machine)
+        public static void Init()
         {
-            StateMachineWindow window = (StateMachineWindow) EditorWindow.GetWindow(typeof(StateMachineWindow));
-            window.EditedSystem = state_machine;
+            StateMachineWindow window = (StateMachineWindow) GetWindow(typeof(StateMachineWindow));
             EditorUtility.SetDirty(window);
             window.Show();
         }

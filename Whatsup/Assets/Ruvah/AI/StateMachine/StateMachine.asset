@@ -68,8 +68,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WindowRect:
     serializedVersion: 2
-    x: 110
-    y: 49
+    x: 86
+    y: 56
     width: 100
     height: 50
   WindowTitle: New State
@@ -95,6 +95,8 @@ MonoBehaviour:
   - {fileID: 392474568914577749}
   - {fileID: 7617909813764594166}
   - {fileID: 8010168099385176020}
+  Variables:
+  - Name: new Int32
 --- !u!114 &392474568914577749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,8 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WindowRect:
     serializedVersion: 2
-    x: 230.24878
-    y: 119
+    x: 178.24878
+    y: 174
     width: 100
     height: 50
   WindowTitle: New State

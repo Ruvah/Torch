@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using UnityEditorInternal;
 
 namespace Ruvah.NodeSystem
 {
@@ -11,11 +12,16 @@ namespace Ruvah.NodeSystem
     {
         // -- FIELDS
 
+        private const float nameFieldWidth = 0.6f;
+        private const float nameValueSpaceWidth = 0.05f;
+        private const float valueFieldWidth = 0.35f;
 
         private string SearchText = string.Empty;
         private GUILayoutOption ToolbarDropdownWidth = GUILayout.Width(20);
         private GUIContent ToolbarDropdownContent = new GUIContent();
         private GenericMenu ToolbarMenu;
+        private ReorderableList reorderableVariablesList;
+
         [SerializeField] private Vector2 VariablesScrollPosition;
 
         // -- METHODS
@@ -44,41 +50,48 @@ namespace Ruvah.NodeSystem
         {
             VariablesScrollPosition = EditorGUILayout.BeginScrollView(VariablesScrollPosition);
             {
-                foreach (var variable in EditedSystem.Variables)
-                {
-                    DrawVariable(variable);
-                }
+                reorderableVariablesList.DoLayoutList();
             }
             EditorGUILayout.EndScrollView();
         }
 
-        private void DrawVariable(Variable variable)
+        private void DrawVariable(Rect rect, int index, bool is_active, bool is_focused)
         {
-            EditorGUILayout.BeginHorizontal();
+
+            var variable = EditedSystem.Variables[index];
+            var field_name_rect = new Rect(rect.x, rect.y,rect.width * nameFieldWidth, EditorGUIUtility.singleLineHeight);
+            var field_value_rect = new Rect(field_name_rect.x + field_name_rect.width + rect.width * nameValueSpaceWidth, rect.y,rect.width * valueFieldWidth,EditorGUIUtility.singleLineHeight);
+
+            if (is_focused)
             {
-                variable.Name = EditorGUILayout.DelayedTextField(variable.Name);
-                if (variable.Type == (typeof(int)))
-                {
-                    variable.Value = EditorGUILayout.DelayedIntField((int) variable.Value);
-                }
-                else if (variable.Type == (typeof(float)))
-                {
-                    variable.Value = EditorGUILayout.DelayedFloatField((float) variable.Value);
-                }
-                else if (variable.Type == (typeof(bool)))
-                {
-                    variable.Value = EditorGUILayout.Toggle((bool) variable.Value);
-                }
-                else if (variable.Type == (typeof(GameObject)))
-                {
-                    variable.Value = (GameObject) EditorGUILayout.ObjectField((Object) variable.Value, variable.Type, false);
-                }
-                else if (variable.Type == (typeof(string)))
-                {
-                    variable.Value = EditorGUILayout.DelayedTextField((string) variable.Value);
-                }
+                variable.Name = EditorGUI.DelayedTextField(field_name_rect, variable.Name);
             }
-            EditorGUILayout.EndHorizontal();
+            else
+            {
+                EditorGUI.LabelField(field_name_rect, variable.Name);
+            }
+
+            if (variable.Type == (typeof(int)))
+            {
+                variable.Value = EditorGUI.DelayedIntField( field_value_rect,(int) variable.Value);
+            }
+            else if (variable.Type == (typeof(float)))
+            {
+                variable.Value = EditorGUI.DelayedFloatField(field_value_rect, (float) variable.Value);
+            }
+            else if (variable.Type == (typeof(bool)))
+            {
+                variable.Value = EditorGUI.Toggle(field_value_rect, (bool) variable.Value);
+            }
+            else if (variable.Type == (typeof(GameObject)))
+            {
+                variable.Value =
+                    (GameObject) EditorGUI.ObjectField(field_value_rect, (Object) variable.Value, variable.Type, false);
+            }
+            else if (variable.Type == (typeof(string)))
+            {
+                variable.Value = EditorGUI.DelayedTextField(field_value_rect, (string) variable.Value);
+            }
         }
 
         ///<summary>
@@ -90,12 +103,14 @@ namespace Ruvah.NodeSystem
             var type = typeof(T);
             var new_instance = Activator.CreateInstance(type);
             EditedSystem.Variables.Add(new Variable(type, CreateNewVariableName(type), new_instance));
+            EditorUtility.SetDirty(EditedSystem);
         }
 
         private void AddGameObjectVariable()
         {
             var type = typeof(GameObject);
             EditedSystem.Variables.Add(new Variable(type, CreateNewVariableName(type), null));
+            EditorUtility.SetDirty(EditedSystem);
         }
 
         private string CreateNewVariableName(Type type)
@@ -120,8 +135,17 @@ namespace Ruvah.NodeSystem
             ToolbarMenu.AddItem(new GUIContent("add bool"),false, AddVariable<bool>);
             ToolbarMenu.AddItem(new GUIContent("add GameObject"),false, AddGameObjectVariable);
 
-
             ToolbarDropdownContent.text = "+";
+
+            reorderableVariablesList = new ReorderableList(
+                EditedSystem.Variables,typeof(Variable),
+                true,
+                false,
+                false,
+                true
+                );
+            reorderableVariablesList.drawElementCallback = DrawVariable;
+            reorderableVariablesList.headerHeight = 0;
         }
     }
 
