@@ -48,6 +48,17 @@ namespace Ruvah.NodeSystem
 
         private void DrawVariables()
         {
+            if (string.IsNullOrEmpty(SearchText))
+            {
+                reorderableVariablesList.draggable = true;
+                reorderableVariablesList.list = EditedSystem.Variables;
+            }
+            else
+            {
+                var display_list = EditedSystem.Variables.FindAll((x) => x.Name.StartsWith(SearchText));
+                reorderableVariablesList.draggable = false;
+                reorderableVariablesList.list = display_list;
+            }
             VariablesScrollPosition = EditorGUILayout.BeginScrollView(VariablesScrollPosition);
             {
                 reorderableVariablesList.DoLayoutList();
@@ -57,8 +68,14 @@ namespace Ruvah.NodeSystem
 
         private void DrawVariable(Rect rect, int index, bool is_active, bool is_focused)
         {
-
             var variable = EditedSystem.Variables[index];
+
+            if (!variable.Name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase))
+            {
+
+                return;
+            }
+
             var field_name_rect = new Rect(rect.x, rect.y,rect.width * nameFieldWidth, EditorGUIUtility.singleLineHeight);
             var field_value_rect = new Rect(field_name_rect.x + field_name_rect.width + rect.width * nameValueSpaceWidth, rect.y,rect.width * valueFieldWidth,EditorGUIUtility.singleLineHeight);
 
