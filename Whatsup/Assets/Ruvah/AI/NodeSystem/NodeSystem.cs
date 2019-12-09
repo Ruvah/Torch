@@ -1,33 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ruvah.NodeSystem.ParameterContainers;
 using UnityEngine;
+using UnityEngine.Assertions.Comparers;
+using Object = System.Object;
 
 namespace Ruvah.NodeSystem
 {
-    // -- TYPES
-
-    [Serializable]
-    public class Variable
-    {
-        public Variable(Type type, string name, object value)
-        {
-            Type = type;
-            Name = name;
-            Value = value;
-        }
-
-        public Type Type;
-        public string Name;
-        public object Value;
-    }
-
-    // -- FIELDS
-
     [Serializable]
     public class NodeSystem : ScriptableObject
     {
+        // -- FIELDS
+
+
         public List<BaseNode> NodesList = new List<BaseNode>();
-        public List<Variable> Variables = new List<Variable>();
+        public List<ParameterContainer> Variables = new List<ParameterContainer>();
     }
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using Ruvah.NodeSystem.ParameterContainers;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 using UnityEditorInternal;
 
 namespace Ruvah.NodeSystem
@@ -55,7 +53,7 @@ namespace Ruvah.NodeSystem
             }
             else
             {
-                var display_list = EditedSystem.Variables.FindAll((x) => x.Name.StartsWith(SearchText));
+                var display_list = EditedSystem.Variables.FindAll((x) => x.name.StartsWith(SearchText));
                 reorderableVariablesList.draggable = false;
                 reorderableVariablesList.list = display_list;
             }
@@ -68,94 +66,114 @@ namespace Ruvah.NodeSystem
 
         private void DrawVariable(Rect rect, int index, bool is_active, bool is_focused)
         {
-            var variable = EditedSystem.Variables[index];
-
-            if (!variable.Name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase))
-            {
-
-                return;
-            }
+            var container = EditedSystem.Variables[index];
 
             var field_name_rect = new Rect(rect.x, rect.y,rect.width * nameFieldWidth, EditorGUIUtility.singleLineHeight);
             var field_value_rect = new Rect(field_name_rect.x + field_name_rect.width + rect.width * nameValueSpaceWidth, rect.y,rect.width * valueFieldWidth,EditorGUIUtility.singleLineHeight);
 
             if (is_focused)
             {
-                variable.Name = EditorGUI.DelayedTextField(field_name_rect, variable.Name);
+                container.name = EditorGUI.DelayedTextField(field_name_rect, container.name);
+                EditorUtility.SetDirty(EditedSystem);
             }
             else
             {
-                EditorGUI.LabelField(field_name_rect, variable.Name);
+                EditorGUI.LabelField(field_name_rect, container.name);
             }
 
-            if (variable.Type == (typeof(int)))
+            switch (container)
             {
-                variable.Value = EditorGUI.DelayedIntField( field_value_rect,(int) variable.Value);
-            }
-            else if (variable.Type == (typeof(float)))
-            {
-                variable.Value = EditorGUI.DelayedFloatField(field_value_rect, (float) variable.Value);
-            }
-            else if (variable.Type == (typeof(bool)))
-            {
-                variable.Value = EditorGUI.Toggle(field_value_rect, (bool) variable.Value);
-            }
-            else if (variable.Type == (typeof(GameObject)))
-            {
-                variable.Value =
-                    (GameObject) EditorGUI.ObjectField(field_value_rect, (Object) variable.Value, variable.Type, false);
-            }
-            else if (variable.Type == (typeof(string)))
-            {
-                variable.Value = EditorGUI.DelayedTextField(field_value_rect, (string) variable.Value);
+                case IntContainer int_variable:
+                {
+                    int_variable.Value = EditorGUI.DelayedIntField(field_value_rect, int_variable.Value);
+                    break;
+                }
+                case FloatContainer float_variable:
+                {
+                    float_variable.Value = EditorGUI.DelayedFloatField(field_value_rect, float_variable.Value);
+                    break;
+                }
+                case BoolContainer bool_variable:
+                {
+                    bool_variable.Value = EditorGUI.Toggle(field_value_rect, (bool) bool_variable.Value);
+                    break;
+                }
+                case GameObjectContainer game_object_container:
+                {
+                    game_object_container.Value =
+                        (GameObject) EditorGUI.ObjectField(field_value_rect, game_object_container.Value,
+                            typeof(GameObject), false);
+                    break;
+                }
             }
         }
 
-        ///<summary>
-            ///<para> Creates a new instance of type T and adds it as a variable to the edited system</para>
-            ///<para> For GameObjects please use AddGameObjectVariable</para>
-        ///</summary>
-        private void AddVariable<T>()
+        private void AddIntVariable()
         {
-            var type = typeof(T);
-            var new_instance = Activator.CreateInstance(type);
-            EditedSystem.Variables.Add(new Variable(type, CreateNewVariableName(type), new_instance));
+            var container = CreateInstance<IntContainer>();
+            container.Initialize(CreateNewVariableName("Int"), default);
+            container.hideFlags = HideFlags.HideInHierarchy;
+            AssetDatabase.AddObjectToAsset(container, EditedSystem);
+            EditedSystem.Variables.Add(container);
+            EditorUtility.SetDirty(EditedSystem);
+        }
+
+        private void AddFloatVariable()
+        {
+            var container = CreateInstance<FloatContainer>();
+            container.Initialize(CreateNewVariableName("Float"), default);
+            container.hideFlags = HideFlags.HideInHierarchy;
+            AssetDatabase.AddObjectToAsset(container, EditedSystem);
+            EditedSystem.Variables.Add(container);
+            EditorUtility.SetDirty(EditedSystem);
+        }
+
+        private void AddBoolVariable()
+        {
+            var container = CreateInstance<BoolContainer>();
+            container.Initialize(CreateNewVariableName("Bool"), default);
+            container.hideFlags = HideFlags.HideInHierarchy;
+            AssetDatabase.AddObjectToAsset(container, EditedSystem);
+            EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
         }
 
         private void AddGameObjectVariable()
         {
-            var type = typeof(GameObject);
-            EditedSystem.Variables.Add(new Variable(type, CreateNewVariableName(type), null));
+            var container = CreateInstance<GameObjectContainer>();
+            container.Initialize(CreateNewVariableName("GameObject"), null);
+            container.hideFlags = HideFlags.HideInHierarchy;
+            AssetDatabase.AddObjectToAsset(container, EditedSystem);
+            EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
         }
 
-        private string CreateNewVariableName(Type type)
+        private string CreateNewVariableName(string name)
         {
-            string base_name = $"new {type.Name}";
-            string name = base_name;
+            string base_name = $"New {name}";
+            string result = base_name;
             int i = 0;
-            while (EditedSystem.Variables.Any((x) => x.Name.Equals(name)))
+            while (EditedSystem.Variables.Any((x) => x.name.Equals(result)))
             {
                 i++;
-                name = $"{base_name} ({i})";
+                result = $"{base_name} ({i})";
             }
 
-            return name;
+            return result;
         }
 
         protected virtual void InitializeVariablesView()
         {
             ToolbarMenu = new GenericMenu();
-            ToolbarMenu.AddItem(new GUIContent("add int"),false, AddVariable<int>);
-            ToolbarMenu.AddItem(new GUIContent("add float"),false, AddVariable<float>);
-            ToolbarMenu.AddItem(new GUIContent("add bool"),false, AddVariable<bool>);
-            ToolbarMenu.AddItem(new GUIContent("add GameObject"),false, AddGameObjectVariable);
+            ToolbarMenu.AddItem(new GUIContent("Add new Int"),false, AddIntVariable);
+            ToolbarMenu.AddItem(new GUIContent("Add new Float"),false, AddFloatVariable);
+            ToolbarMenu.AddItem(new GUIContent("Add new Bool"),false, AddBoolVariable);
+            ToolbarMenu.AddItem(new GUIContent("Add new GameObject"),false, AddGameObjectVariable);
 
             ToolbarDropdownContent.text = "+";
 
             reorderableVariablesList = new ReorderableList(
-                EditedSystem.Variables,typeof(Variable),
+                EditedSystem.Variables,typeof(ParameterContainer),
                 true,
                 false,
                 false,
