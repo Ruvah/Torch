@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace Ruvah.AI.NodeSystem
 {
@@ -38,9 +39,7 @@ namespace Ruvah.AI.NodeSystem
         public float MinZoom = 1f;
         public float MaxZoom = 3f;
 
-        protected Vector2 MousePosition { get; private set; }
-        protected Vector2 NodeViewMousePosition { get; private set; }
-        protected bool IsMouseInNodeView { get; private set; }
+        protected GUIStyle NodeViewScrollbarStyle = new GUIStyle();
 
         private const float ScrollDeltaModifier = 0.1f;
         private NodeObject _SelectedObject;
@@ -52,7 +51,7 @@ namespace Ruvah.AI.NodeSystem
         private BaseNode ConnectionFromNode;
 
         [SerializeField] private EditorGUISplitView HorizontalSplitView = new EditorGUISplitView (EditorGUISplitView.Direction.Horizontal,0.3f);
-        [SerializeField] private Vector2 NodeViewScrollPos = Vector2.zero;
+        [SerializeField] private Vector2 NodeViewScrollPos = new Vector2(5000,5000);
 
         // -- METHODS
 
@@ -65,72 +64,6 @@ namespace Ruvah.AI.NodeSystem
         {
             NodeMenu = new GenericMenu();
             NodeMenu.AddItem(new GUIContent("CreateTransition"), false, StartConnection);
-        }
-
-        private void HandleMouseClick(Event e)
-        {
-            if(IsMouseInNodeView)
-            {
-                HandleMousClickNodeView(e);
-            }
-
-            if (CurrentState == NodeEditorState.CreatingConnection)
-            {
-                CancelConnectionCreation();
-            }
-        }
-
-        private void HandleMousClickNodeView(Event e)
-        {
-            foreach (var node in EditedSystem.NodesList)
-            {
-                if (node.WindowRect.Contains(NodeViewMousePosition))
-                {
-                    SelectedObject = node;
-                    switch (e.button)
-                    {
-                        case 0:
-                        {
-                            LeftClickNode(node);
-                            break;
-                        }
-                        case 1:
-                        {
-                            NodeMenu.ShowAsContext();
-                            break;
-                        }
-                    }
-                    return;
-                }
-            }
-
-            foreach (var connection in Connections)
-            {
-                if (connection.Contains(NodeViewMousePosition))
-                {
-                    SelectedObject = connection;
-                    switch (e.button)
-                    {
-                        case 0:
-                        {
-                            LeftClickConnection(connection);
-                            break;
-                        }
-                        case 1:
-                        {
-
-                            break;
-                        }
-
-                    }
-                    return;
-                }
-            }
-
-            if (e.button == Constants.RightMouseButton)
-            {
-                ContextMenu.ShowAsContext();
-            }
         }
 
         protected void Initialize()
@@ -169,23 +102,6 @@ namespace Ruvah.AI.NodeSystem
                 node.WindowRect.y = Mathf.Clamp(node.WindowRect.y, 0, NodeViewRect.height - node.WindowRect.height);
             }
             EndWindows();
-        }
-
-        private void MouseEvent()
-        {
-            Event current_event = Event.current;
-            MousePosition = current_event.mousePosition;
-            IsMouseInNodeView = HorizontalSplitView.View2Rect.Contains(MousePosition);
-            NodeViewMousePosition = MousePosition - HorizontalSplitView.View2Rect.position + NodeViewScrollPos;
-            if (IsMouseInNodeView && current_event.isScrollWheel)
-            {
-                Zoom -= Time.deltaTime * current_event.delta.y * ScrollDeltaModifier;
-                Zoom = Mathf.Clamp(Zoom, MinZoom, MaxZoom);
-            }
-            else if (current_event.isMouse)
-            {
-                HandleMouseClick(current_event);
-            }
         }
 
         private void StartConnection()
@@ -264,9 +180,7 @@ namespace Ruvah.AI.NodeSystem
 
         private void DrawNodeView()
         {
-
-            MouseEvent();
-            NodeViewScrollPos = GUI.BeginScrollView(HorizontalSplitView.View2Rect, NodeViewScrollPos, NodeViewRect);
+            NodeViewScrollPos = GUI.BeginScrollView(HorizontalSplitView.View2Rect, NodeViewScrollPos, NodeViewRect, NodeViewScrollbarStyle, NodeViewScrollbarStyle);
             DrawConnections();
             DrawNodes();
             GUI.EndScrollView();
@@ -276,6 +190,7 @@ namespace Ruvah.AI.NodeSystem
 
         private void OnGUI()
         {
+            HandleEvents();
             HorizontalSplitView.BeginSplitView();
             DrawVariablesView();
             HorizontalSplitView.Split ();

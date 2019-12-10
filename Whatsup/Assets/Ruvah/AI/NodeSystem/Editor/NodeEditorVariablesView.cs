@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Ruvah.AI.NodeSystem.ParameterContainers;
 using UnityEditor;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEditorInternal;
 
@@ -19,6 +21,9 @@ namespace Ruvah.AI.NodeSystem
         private GUIContent ToolbarDropdownContent = new GUIContent();
         private GenericMenu ToolbarMenu;
         private ReorderableList reorderableVariablesList;
+        private SearchField SearchField;
+
+        private List<ParameterContainer> DisplayList;
 
         [SerializeField] private Vector2 VariablesScrollPosition;
 
@@ -34,7 +39,13 @@ namespace Ruvah.AI.NodeSystem
         {
             EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
             {
-                SearchText = GUILayout.TextField(SearchText, EditorStyles.toolbarSearchField);
+                var search_text = SearchField.OnToolbarGUI(SearchText);
+                if (SearchText != search_text)
+                {
+                    SearchText = search_text;
+                    UpdateSearchResults();
+                }
+
                 if (EditorGUILayout.DropdownButton(ToolbarDropdownContent, FocusType.Passive,
                     EditorStyles.toolbarButton, ToolbarDropdownWidth))
                 {
@@ -44,19 +55,16 @@ namespace Ruvah.AI.NodeSystem
             EditorGUILayout.EndHorizontal();
         }
 
+        private void UpdateSearchResults()
+        {
+            bool is_search_empty = string.IsNullOrEmpty(SearchText);
+            DisplayList = is_search_empty? EditedSystem.Variables : EditedSystem.Variables.FindAll((x) => x.name.StartsWith(SearchText));
+            reorderableVariablesList.list = DisplayList;
+            reorderableVariablesList.draggable = is_search_empty;
+        }
+
         private void DrawVariables()
         {
-            if (string.IsNullOrEmpty(SearchText))
-            {
-                reorderableVariablesList.draggable = true;
-                reorderableVariablesList.list = EditedSystem.Variables;
-            }
-            else
-            {
-                var display_list = EditedSystem.Variables.FindAll((x) => x.name.StartsWith(SearchText));
-                reorderableVariablesList.draggable = false;
-                reorderableVariablesList.list = display_list;
-            }
             VariablesScrollPosition = EditorGUILayout.BeginScrollView(VariablesScrollPosition);
             {
                 reorderableVariablesList.DoLayoutList();
@@ -172,8 +180,11 @@ namespace Ruvah.AI.NodeSystem
 
             ToolbarDropdownContent.text = "+";
 
+            DisplayList = EditedSystem.Variables;
+
             reorderableVariablesList = new ReorderableList(
-                EditedSystem.Variables,typeof(ParameterContainer),
+                DisplayList,
+                typeof(ParameterContainer),
                 true,
                 false,
                 false,
@@ -181,6 +192,9 @@ namespace Ruvah.AI.NodeSystem
                 );
             reorderableVariablesList.drawElementCallback = DrawVariable;
             reorderableVariablesList.headerHeight = 0;
+            //reorderableVariablesList.onChangedCallback = ReorderableVariablesList_OnChanged;
+
+            SearchField = new SearchField();
         }
     }
 
