@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Ruvah.AI.NodeSystem.ParameterContainers;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEditorInternal;
+using UnityEngine.Assertions.Comparers;
 
 namespace Ruvah.AI.NodeSystem
 {
@@ -58,6 +60,7 @@ namespace Ruvah.AI.NodeSystem
         private void UpdateSearchResults()
         {
             bool is_search_empty = string.IsNullOrEmpty(SearchText);
+            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
             reorderableVariablesList.draggable = is_search_empty;
         }
 
@@ -70,15 +73,15 @@ namespace Ruvah.AI.NodeSystem
             EditorGUILayout.EndScrollView();
         }
 
-        private float ShouldDrawVariable(int index)
+        public void ReorderableVariablesList_OnChanged(ReorderableList list)
         {
-            return DisplayList[index].name.StartsWith(SearchText) ? reorderableVariablesList.elementHeight : 0f;
+            EditedSystem.Variables.Clear();
+            EditedSystem.Variables.AddRange(DisplayList);
         }
 
         private void DrawVariable(Rect rect, int index, bool is_active, bool is_focused)
         {
-            if(rect.height == 0 && !is_active) {return;}
-            var container = EditedSystem.Variables[index];
+            var container = DisplayList[index];
 
             var field_name_rect = new Rect(rect.x, rect.y,rect.width * nameFieldWidth, EditorGUIUtility.singleLineHeight);
             var field_value_rect = new Rect(field_name_rect.x + field_name_rect.width + rect.width * nameValueSpaceWidth, rect.y,rect.width * valueFieldWidth,EditorGUIUtility.singleLineHeight);
@@ -128,6 +131,8 @@ namespace Ruvah.AI.NodeSystem
             AssetDatabase.AddObjectToAsset(container, EditedSystem);
             EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
+            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
+
         }
 
         private void AddFloatVariable()
@@ -138,6 +143,7 @@ namespace Ruvah.AI.NodeSystem
             AssetDatabase.AddObjectToAsset(container, EditedSystem);
             EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
+            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
         }
 
         private void AddBoolVariable()
@@ -148,6 +154,7 @@ namespace Ruvah.AI.NodeSystem
             AssetDatabase.AddObjectToAsset(container, EditedSystem);
             EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
+            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
         }
 
         private void AddGameObjectVariable()
@@ -158,6 +165,7 @@ namespace Ruvah.AI.NodeSystem
             AssetDatabase.AddObjectToAsset(container, EditedSystem);
             EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
+            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
         }
 
         private string CreateNewVariableName(string name)
@@ -184,7 +192,7 @@ namespace Ruvah.AI.NodeSystem
 
             ToolbarDropdownContent.text = "+";
 
-            DisplayList = EditedSystem.Variables;
+            DisplayList = new List<ParameterContainer>(EditedSystem.Variables);
 
             reorderableVariablesList = new ReorderableList(
                 DisplayList,
@@ -196,7 +204,7 @@ namespace Ruvah.AI.NodeSystem
                 );
             reorderableVariablesList.drawElementCallback = DrawVariable;
             reorderableVariablesList.headerHeight = 0;
-            reorderableVariablesList.elementHeightCallback = ShouldDrawVariable;
+            reorderableVariablesList.onChangedCallback = ReorderableVariablesList_OnChanged;
             SearchField = new SearchField();
         }
     }

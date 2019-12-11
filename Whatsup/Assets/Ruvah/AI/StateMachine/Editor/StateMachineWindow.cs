@@ -22,6 +22,7 @@ namespace Ruvah.AI.Statemachine
         public static void Init()
         {
             StateMachineWindow window = (StateMachineWindow) GetWindow(typeof(StateMachineWindow));
+            window.Initialize();
             EditorUtility.SetDirty(window);
             window.Show();
         }
