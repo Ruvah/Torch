@@ -58,8 +58,6 @@ namespace Ruvah.AI.NodeSystem
         private void UpdateSearchResults()
         {
             bool is_search_empty = string.IsNullOrEmpty(SearchText);
-            DisplayList = is_search_empty? EditedSystem.Variables : EditedSystem.Variables.FindAll((x) => x.name.StartsWith(SearchText));
-            reorderableVariablesList.list = DisplayList;
             reorderableVariablesList.draggable = is_search_empty;
         }
 
@@ -72,8 +70,14 @@ namespace Ruvah.AI.NodeSystem
             EditorGUILayout.EndScrollView();
         }
 
+        private float ShouldDrawVariable(int index)
+        {
+            return DisplayList[index].name.StartsWith(SearchText) ? reorderableVariablesList.elementHeight : 0f;
+        }
+
         private void DrawVariable(Rect rect, int index, bool is_active, bool is_focused)
         {
+            if(rect.height == 0 && !is_active) {return;}
             var container = EditedSystem.Variables[index];
 
             var field_name_rect = new Rect(rect.x, rect.y,rect.width * nameFieldWidth, EditorGUIUtility.singleLineHeight);
@@ -192,8 +196,7 @@ namespace Ruvah.AI.NodeSystem
                 );
             reorderableVariablesList.drawElementCallback = DrawVariable;
             reorderableVariablesList.headerHeight = 0;
-            //reorderableVariablesList.onChangedCallback = ReorderableVariablesList_OnChanged;
-
+            reorderableVariablesList.elementHeightCallback = ShouldDrawVariable;
             SearchField = new SearchField();
         }
     }
