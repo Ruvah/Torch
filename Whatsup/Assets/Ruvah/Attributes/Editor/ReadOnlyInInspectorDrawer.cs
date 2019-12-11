@@ -1,18 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
 
-public class ReadOnlyInInspectorDrawer : MonoBehaviour
+[CustomPropertyDrawer(typeof(ReadOnlyInInspector))]
+public class ReadOnlyInInspectorDrawer : PropertyDrawer
 {
-    // Start is called before the first frame update
-    void Start()
+    public override float GetPropertyHeight(SerializedProperty property,
+        GUIContent label)
     {
-        
+        return EditorGUI.GetPropertyHeight(property, label, true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnGUI(Rect position,
+        SerializedProperty property,
+        GUIContent label)
     {
-        
+        GUI.enabled = false;
+        EditorGUI.PropertyField(position, property, label, true);
+        GUI.enabled = true;
     }
 }

@@ -70,7 +70,6 @@ namespace Ruvah.AI.NodeSystem
                 DestroyImmediate(connection);
             }
             added_connection.AddTransition();
-            EditorUtility.SetDirty(added_connection);
             return added_connection;
         }
 
