@@ -20,7 +20,7 @@ namespace Ruvah.AI.NodeSystem
             Event current_event = Event.current;
             MousePosition = current_event.mousePosition;
             IsMouseInNodeView = HorizontalSplitView.View2Rect.Contains(MousePosition);
-            NodeViewMousePosition = MousePosition - HorizontalSplitView.View2Rect.position + NodeViewScrollPos;
+            NodeViewMousePosition = (MousePosition - HorizontalSplitView.View2Rect.position) /Zoom + NodeViewScrollPos;
 
             if (current_event.isMouse)
             {

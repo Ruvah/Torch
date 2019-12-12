@@ -10,5 +10,8 @@ namespace Ruvah
         public const int LeftMouseButton = 0;
         public const int RightMouseButton = 1;
         public const int ScrollWheelButton = 2;
+
+        //Editor
+        public const float EditorTabHeight = 21f;
     }
 }

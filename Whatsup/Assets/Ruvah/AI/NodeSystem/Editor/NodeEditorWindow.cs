@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.XR;
+
 
 namespace Ruvah.AI.NodeSystem
 {
@@ -20,7 +19,6 @@ namespace Ruvah.AI.NodeSystem
         // -- FIELDS
 
 
-        // -- General
         public NodeObject SelectedObject
         {
             get => _SelectedObject;
@@ -49,6 +47,8 @@ namespace Ruvah.AI.NodeSystem
 
         private BaseConnection ConnectionInCreation;
         private BaseNode ConnectionFromNode;
+
+        private Matrix4x4 RegularMatrix;
 
         [SerializeField] private EditorGUISplitView HorizontalSplitView = new EditorGUISplitView (EditorGUISplitView.Direction.Horizontal,0.3f);
         [SerializeField] private Vector2 NodeViewScrollPos = new Vector2(5000,5000);
@@ -180,10 +180,27 @@ namespace Ruvah.AI.NodeSystem
 
         private void DrawNodeView()
         {
+            StartNodeViewZoom();
+
             NodeViewScrollPos = GUI.BeginScrollView(HorizontalSplitView.View2Rect, NodeViewScrollPos, NodeViewRect, NodeViewScrollbarStyle, NodeViewScrollbarStyle);
             DrawConnections();
             DrawNodes();
             GUI.EndScrollView();
+
+            EndNodeViewZoom();
+        }
+
+        private void StartNodeViewZoom()
+        {
+            RegularMatrix = GUI.matrix;
+            Matrix4x4 transl = Matrix4x4.TRS(new Vector3(HorizontalSplitView.View2Rect.position.x , Constants.EditorTabHeight, 1), Quaternion.identity, Vector3.one);
+            Matrix4x4 scale = Matrix4x4.Scale(new Vector3(Zoom, Zoom, Zoom));
+            GUI.matrix = transl * scale * transl.inverse;
+        }
+
+        private void EndNodeViewZoom()
+        {
+            GUI.matrix = RegularMatrix;
         }
 
         // -- UNITY
