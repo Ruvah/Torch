@@ -34,8 +34,8 @@ namespace Ruvah.AI.NodeSystem
         public NodeEditorState CurrentState;
         public NodeSystem EditedSystem;
         public float Zoom = 1f;
-        public float MinZoom = 1f;
-        public float MaxZoom = 3f;
+        public float MinZoom = 0.5f;
+        public float MaxZoom = 1f;
 
         protected GUIStyle NodeViewScrollbarStyle = new GUIStyle();
 
@@ -182,7 +182,9 @@ namespace Ruvah.AI.NodeSystem
         {
             StartNodeViewZoom();
 
-            NodeViewScrollPos = GUI.BeginScrollView(HorizontalSplitView.View2Rect, NodeViewScrollPos, NodeViewRect, NodeViewScrollbarStyle, NodeViewScrollbarStyle);
+            var rect = HorizontalSplitView.View2Rect;
+            rect.size /= Zoom;
+            NodeViewScrollPos = GUI.BeginScrollView(rect, NodeViewScrollPos, NodeViewRect, NodeViewScrollbarStyle, NodeViewScrollbarStyle);
             DrawConnections();
             DrawNodes();
             GUI.EndScrollView();
@@ -192,6 +194,9 @@ namespace Ruvah.AI.NodeSystem
 
         private void StartNodeViewZoom()
         {
+            GUI.EndGroup();
+            Rect rect = new Rect(0, Constants.EditorTabHeight, Screen.width / Zoom, Screen.height / Zoom);
+            GUI.BeginGroup(rect);
             RegularMatrix = GUI.matrix;
             Matrix4x4 transl = Matrix4x4.TRS(new Vector3(HorizontalSplitView.View2Rect.position.x , Constants.EditorTabHeight, 1), Quaternion.identity, Vector3.one);
             Matrix4x4 scale = Matrix4x4.Scale(new Vector3(Zoom, Zoom, Zoom));
@@ -201,6 +206,9 @@ namespace Ruvah.AI.NodeSystem
         private void EndNodeViewZoom()
         {
             GUI.matrix = RegularMatrix;
+            GUI.EndGroup();
+            Rect rect = new Rect(0, Constants.EditorTabHeight, Screen.width, Screen.height);
+            GUI.BeginGroup(rect);
         }
 
         // -- UNITY
