@@ -195,10 +195,10 @@ namespace Ruvah.AI.NodeSystem
         private void StartNodeViewZoom()
         {
             GUI.EndGroup();
-            Rect rect = new Rect(0, Constants.EditorTabHeight, Screen.width / Zoom, Screen.height / Zoom);
+            Rect rect = new Rect(0, Constants.EditorConstants.EditorTabHeight, Screen.width / Zoom, Screen.height / Zoom);
             GUI.BeginGroup(rect);
             RegularMatrix = GUI.matrix;
-            Matrix4x4 transl = Matrix4x4.TRS(new Vector3(HorizontalSplitView.View2Rect.position.x , Constants.EditorTabHeight, 1), Quaternion.identity, Vector3.one);
+            Matrix4x4 transl = Matrix4x4.TRS(new Vector3(HorizontalSplitView.View2Rect.position.x , Constants.EditorConstants.EditorTabHeight, 1), Quaternion.identity, Vector3.one);
             Matrix4x4 scale = Matrix4x4.Scale(new Vector3(Zoom, Zoom, Zoom));
             GUI.matrix = transl * scale * transl.inverse;
         }
@@ -207,7 +207,7 @@ namespace Ruvah.AI.NodeSystem
         {
             GUI.matrix = RegularMatrix;
             GUI.EndGroup();
-            Rect rect = new Rect(0, Constants.EditorTabHeight, Screen.width, Screen.height);
+            Rect rect = new Rect(0, Constants.EditorConstants.EditorTabHeight, Screen.width, Screen.height);
             GUI.BeginGroup(rect);
         }
 

@@ -12,6 +12,12 @@ namespace Ruvah
         public const int ScrollWheelButton = 2;
 
         //Editor
-        public const float EditorTabHeight = 21f;
+        public static class EditorConstants
+        {
+            public const float EditorTabHeight = 21f;
+        }
+
+        //General
+        public const int InvalidListIndex = -1;
     }
 }

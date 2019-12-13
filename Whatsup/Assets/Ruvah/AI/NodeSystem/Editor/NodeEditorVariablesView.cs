@@ -6,7 +6,6 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEditorInternal;
-using UnityEngine.Assertions.Comparers;
 
 namespace Ruvah.AI.NodeSystem
 {
@@ -60,7 +59,7 @@ namespace Ruvah.AI.NodeSystem
         private void UpdateSearchResults()
         {
             bool is_search_empty = string.IsNullOrEmpty(SearchText);
-            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
+            UpdateDisplayList();
             reorderableVariablesList.draggable = is_search_empty;
         }
 
@@ -73,10 +72,28 @@ namespace Ruvah.AI.NodeSystem
             EditorGUILayout.EndScrollView();
         }
 
-        public void ReorderableVariablesList_OnChanged(ReorderableList list)
+        public void ReorderableVariablesList_OnReorder(ReorderableList list)
         {
+            if (EditedSystem.Variables.Count != DisplayList.Count)
+            {
+                return;
+            }
+
             EditedSystem.Variables.Clear();
             EditedSystem.Variables.AddRange(DisplayList);
+        }
+
+        public void ReorderableVariablesList_OnRemove(ReorderableList list)
+        {
+            int display_delete_idx = list.index;
+            var to_delete_index = EditedSystem.Variables.FindIndex(x => x == DisplayList[display_delete_idx]);
+            if (to_delete_index != Constants.InvalidListIndex)
+            {
+                AssetDatabase.RemoveObjectFromAsset(EditedSystem.Variables[to_delete_index]);
+                EditedSystem.Variables.RemoveAt(to_delete_index);
+                EditorUtility.SetDirty(EditedSystem);
+                UpdateDisplayList();
+            }
         }
 
         private void DrawVariable(Rect rect, int index, bool is_active, bool is_focused)
@@ -131,8 +148,7 @@ namespace Ruvah.AI.NodeSystem
             AssetDatabase.AddObjectToAsset(container, EditedSystem);
             EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
-            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
-
+            UpdateDisplayList();
         }
 
         private void AddFloatVariable()
@@ -143,7 +159,7 @@ namespace Ruvah.AI.NodeSystem
             AssetDatabase.AddObjectToAsset(container, EditedSystem);
             EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
-            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
+            UpdateDisplayList();
         }
 
         private void AddBoolVariable()
@@ -154,7 +170,7 @@ namespace Ruvah.AI.NodeSystem
             AssetDatabase.AddObjectToAsset(container, EditedSystem);
             EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
-            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
+            UpdateDisplayList();
         }
 
         private void AddGameObjectVariable()
@@ -165,7 +181,7 @@ namespace Ruvah.AI.NodeSystem
             AssetDatabase.AddObjectToAsset(container, EditedSystem);
             EditedSystem.Variables.Add(container);
             EditorUtility.SetDirty(EditedSystem);
-            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
+            UpdateDisplayList();
         }
 
         private string CreateNewVariableName(string name)
@@ -180,6 +196,12 @@ namespace Ruvah.AI.NodeSystem
             }
 
             return result;
+        }
+
+        private void UpdateDisplayList()
+        {
+            DisplayList = EditedSystem.Variables.FindAll(x => x.name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase));
+            reorderableVariablesList.list = DisplayList;
         }
 
         protected virtual void InitializeVariablesView()
@@ -204,7 +226,8 @@ namespace Ruvah.AI.NodeSystem
                 );
             reorderableVariablesList.drawElementCallback = DrawVariable;
             reorderableVariablesList.headerHeight = 0;
-            reorderableVariablesList.onChangedCallback = ReorderableVariablesList_OnChanged;
+            reorderableVariablesList.onRemoveCallback = ReorderableVariablesList_OnRemove;
+            reorderableVariablesList.onReorderCallback = ReorderableVariablesList_OnReorder;
             SearchField = new SearchField();
         }
     }
