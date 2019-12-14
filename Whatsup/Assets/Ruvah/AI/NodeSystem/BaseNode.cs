@@ -29,20 +29,20 @@ namespace Ruvah.AI.NodeSystem
 
         public Vector2 GetTop()
         {
-            Vector2 bottom;
-            bottom.x = WindowRect.x + WindowRect.width * 0.5f;
-            bottom.y = WindowRect.yMin;
+            Vector2 top;
+            top.x = WindowRect.x + WindowRect.width * 0.5f;
+            top.y = WindowRect.yMin;
 
-            return bottom;
+            return top;
         }
 
         public Vector2 GetBottom()
         {
-            Vector2 top;
-            top.x = WindowRect.x + WindowRect.width * 0.5f;
-            top.y = WindowRect.yMax;
+            Vector2 bottom;
+            bottom.x = WindowRect.x + WindowRect.width * 0.5f;
+            bottom.y = WindowRect.yMax;
 
-            return top;
+            return bottom;
         }
 
         public virtual void DrawConnections()
@@ -87,7 +87,5 @@ namespace Ruvah.AI.NodeSystem
             found_connection = null;
             return false;
         }
-
-
     }
 }
