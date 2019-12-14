@@ -8,6 +8,9 @@ namespace Ruvah.AI.NodeSystem
     {
         // -- FIELDS
 
+        public float Zoom = 1f;
+        private const float MinZoom = 0.5f;
+        private const float MaxZoom = 1f;
 
         protected Vector2 MousePosition { get; private set; }
         protected Vector2 NodeViewMousePosition { get; private set; }
@@ -169,7 +172,7 @@ namespace Ruvah.AI.NodeSystem
             {
                 case Constants.RightMouseButton:
                 {
-                    ContextMenu.ShowAsContext();
+                    NodeViewContextMenu.ShowAsContext();
                     current_event.Use();
                     break;
                 }

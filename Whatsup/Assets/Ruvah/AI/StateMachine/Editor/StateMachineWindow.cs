@@ -28,10 +28,10 @@ namespace Ruvah.AI.Statemachine
         }
 
 
-        protected override void CreateContextMenu()
+        protected override void CreateNodeViewContextMenu()
         {
-            base.CreateContextMenu();
-            ContextMenu.AddItem(new GUIContent("AddState"), false, ContextMenuOption,
+            base.CreateNodeViewContextMenu();
+            NodeViewContextMenu.AddItem(new GUIContent("AddState"), false, ContextMenuOption,
                 StateMachineContextOptions.CreateState);
         }
 
