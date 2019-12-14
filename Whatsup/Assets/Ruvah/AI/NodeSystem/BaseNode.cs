@@ -12,7 +12,6 @@ namespace Ruvah.AI.NodeSystem
         // -- FIELDS
 
         public Rect WindowRect = new Rect(0,0,100,50);
-        public string WindowTitle;
         public List<BaseConnection> Connections = new List<BaseConnection>();
 
         // -- METHODS

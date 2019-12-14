@@ -56,7 +56,7 @@ namespace Ruvah.AI.NodeSystem
             for (var i = 0; i < EditedSystem.NodesList.Count; i++)
             {
                 var node = EditedSystem.NodesList[i];
-                node.WindowRect = GUI.Window(i, node.WindowRect, node.DrawContent, node.WindowTitle);
+                node.WindowRect = GUI.Window(i, node.WindowRect, node.DrawContent, node.name);
                 node.WindowRect.x = Mathf.Clamp(node.WindowRect.x, 0, NodeViewRect.width - node.WindowRect.width);
                 node.WindowRect.y = Mathf.Clamp(node.WindowRect.y, 0, NodeViewRect.height - node.WindowRect.height);
             }

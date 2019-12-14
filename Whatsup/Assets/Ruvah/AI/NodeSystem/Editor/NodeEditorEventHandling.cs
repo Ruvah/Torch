@@ -8,7 +8,7 @@ namespace Ruvah.AI.NodeSystem
     {
         // -- FIELDS
 
-        
+
         public float Zoom;
 
         private const float ScrollDeltaModifier = 0.1f;

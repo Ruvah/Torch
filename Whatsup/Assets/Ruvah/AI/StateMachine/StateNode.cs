@@ -9,9 +9,6 @@ namespace Ruvah.AI.Statemachine
     [Serializable]
     public class StateNode : BaseNode
     {
-        public StateNode()
-        {
-            WindowTitle = "New State";
-        }
+
     }
 }
