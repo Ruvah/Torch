@@ -34,7 +34,6 @@ namespace Ruvah.AI.NodeSystem
         public NodeEditorState CurrentState;
         public NodeSystem EditedSystem;
 
-        private const float ScrollDeltaModifier = 0.1f;
         private NodeObject _SelectedObject;
         private List<BaseConnection> Connections = new List<BaseConnection>();
 
@@ -45,6 +44,7 @@ namespace Ruvah.AI.NodeSystem
         [SerializeField] private EditorGUISplitView HorizontalSplitView = new EditorGUISplitView (EditorGUISplitView.Direction.Horizontal,0.3f);
 
         // -- METHODS
+
 
         public abstract void SetWindowTitle();
 
@@ -66,6 +66,8 @@ namespace Ruvah.AI.NodeSystem
             {
                 EditedSystem = system;
             }
+
+            Zoom = 1f;
 
             InitializeConnections();
             InitalizeNodeView();
@@ -108,41 +110,6 @@ namespace Ruvah.AI.NodeSystem
             CurrentState = NodeEditorState.None;
         }
 
-        private void LeftClickNode(BaseNode node)
-        {
-            switch (CurrentState)
-            {
-                case NodeEditorState.None:
-                {
-
-                    break;
-                }
-
-                case NodeEditorState.CreatingConnection:
-                {
-                    CompleteConnectionCreation(node);
-                    break;
-                }
-            }
-        }
-
-        private void LeftClickConnection(BaseConnection connection)
-        {
-            switch (CurrentState)
-            {
-                case NodeEditorState.None:
-                {
-                    break;
-                }
-
-                case NodeEditorState.CreatingConnection:
-                {
-                    CancelConnectionCreation();
-                    break;
-                }
-            }
-        }
-
         private void InitializeConnections()
         {
             Connections.Clear();
@@ -154,9 +121,8 @@ namespace Ruvah.AI.NodeSystem
             }
         }
 
-
-
         // -- UNITY
+
 
         private void OnGUI()
         {

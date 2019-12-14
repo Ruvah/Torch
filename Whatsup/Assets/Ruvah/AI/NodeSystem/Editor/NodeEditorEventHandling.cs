@@ -8,7 +8,10 @@ namespace Ruvah.AI.NodeSystem
     {
         // -- FIELDS
 
-        public float Zoom = 1f;
+        
+        public float Zoom;
+
+        private const float ScrollDeltaModifier = 0.1f;
         private const float MinZoom = 0.5f;
         private const float MaxZoom = 1f;
 
@@ -17,6 +20,7 @@ namespace Ruvah.AI.NodeSystem
         protected bool IsMouseInNodeView { get; private set; }
 
         // -- METHODS
+
 
         private void HandleEvents()
         {
@@ -190,6 +194,41 @@ namespace Ruvah.AI.NodeSystem
             }
 
             NodeViewScrollPos -= current_event.delta;
+        }
+
+        private void LeftClickNode(BaseNode node)
+        {
+            switch (CurrentState)
+            {
+                case NodeEditorState.None:
+                {
+
+                    break;
+                }
+
+                case NodeEditorState.CreatingConnection:
+                {
+                    CompleteConnectionCreation(node);
+                    break;
+                }
+            }
+        }
+
+        private void LeftClickConnection(BaseConnection connection)
+        {
+            switch (CurrentState)
+            {
+                case NodeEditorState.None:
+                {
+                    break;
+                }
+
+                case NodeEditorState.CreatingConnection:
+                {
+                    CancelConnectionCreation();
+                    break;
+                }
+            }
         }
     }
 }
