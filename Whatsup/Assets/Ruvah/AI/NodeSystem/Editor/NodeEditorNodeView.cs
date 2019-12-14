@@ -10,12 +10,18 @@ namespace Ruvah.AI.NodeSystem
         // -- FIELDS
 
         protected GUIStyle NodeViewScrollbarStyle = new GUIStyle();
-        private Rect NodeViewRect = new Rect(0,0,10000,10000);
+        private Rect NodeViewRect;
         private Matrix4x4 RegularMatrix;
 
-        [SerializeField] private Vector2 NodeViewScrollPos = new Vector2(5000,5000);
+        private Vector2 NodeViewScrollPos;
 
         // -- METHODS
+
+        private void InitalizeNodeView()
+        {
+            NodeViewScrollPos = new Vector2(5000,5000);
+            NodeViewRect = new Rect(0,0,10000,10000);
+        }
 
         private void DrawNodeView()
         {
@@ -79,11 +85,5 @@ namespace Ruvah.AI.NodeSystem
             Rect rect = new Rect(0, Constants.EditorConstants.EditorTabHeight, Screen.width, Screen.height);
             GUI.BeginGroup(rect);
         }
-
-        private void DeleteNode()
-        {
-
-        }
-
     }
 }

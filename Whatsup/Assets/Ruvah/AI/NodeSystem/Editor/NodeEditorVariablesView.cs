@@ -72,7 +72,7 @@ namespace Ruvah.AI.NodeSystem
             EditorGUILayout.EndScrollView();
         }
 
-        public void ReorderableVariablesList_OnReorder(ReorderableList list)
+        private void ReorderableVariablesList_OnReorder(ReorderableList list)
         {
             if (EditedSystem.Variables.Count != DisplayList.Count)
             {
@@ -83,16 +83,18 @@ namespace Ruvah.AI.NodeSystem
             EditedSystem.Variables.AddRange(DisplayList);
         }
 
-        public void ReorderableVariablesList_OnRemove(ReorderableList list)
+        private void ReorderableVariablesList_OnRemove(ReorderableList list)
         {
             int display_delete_idx = list.index;
             var to_delete_index = EditedSystem.Variables.FindIndex(x => x == DisplayList[display_delete_idx]);
             if (to_delete_index != Constants.InvalidListIndex)
             {
-                AssetDatabase.RemoveObjectFromAsset(EditedSystem.Variables[to_delete_index]);
+                var asset = EditedSystem.Variables[to_delete_index];
+                AssetDatabase.RemoveObjectFromAsset(asset);
                 EditedSystem.Variables.RemoveAt(to_delete_index);
                 EditorUtility.SetDirty(EditedSystem);
                 UpdateDisplayList();
+                DestroyImmediate(asset);
             }
         }
 

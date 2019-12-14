@@ -46,6 +46,9 @@ namespace Ruvah.AI.NodeSystem
 
         // -- METHODS
 
+        public abstract void SetWindowTitle();
+
+
         protected virtual void CreateNodeViewContextMenu()
         {
             NodeViewContextMenu = new GenericMenu();
@@ -55,7 +58,6 @@ namespace Ruvah.AI.NodeSystem
         {
             NodeMenu = new GenericMenu();
             NodeMenu.AddItem(new GUIContent("CreateTransition"), false, StartConnection);
-            NodeMenu.AddItem(new GUIContent("DeleteNode"), false, DeleteNode);
         }
 
         protected void Initialize()
@@ -65,15 +67,11 @@ namespace Ruvah.AI.NodeSystem
                 EditedSystem = system;
             }
 
+            InitializeConnections();
+            InitalizeNodeView();
             InitializeVariablesView();
             CreateNodeViewContextMenu();
             CreateNodeMenu();
-            Connections.Clear();
-            if (EditedSystem == null) { return; }
-            foreach (var node in EditedSystem.NodesList)
-            {
-                Connections.AddRange(node.Connections);
-            }
         }
 
         private void CancelConnectionCreation()
@@ -145,6 +143,18 @@ namespace Ruvah.AI.NodeSystem
             }
         }
 
+        private void InitializeConnections()
+        {
+            Connections.Clear();
+            if (EditedSystem == null) { return; }
+            foreach (var node in EditedSystem.NodesList)
+            {
+                Connections.AddRange(node.Connections);
+                ConnectionInCreation = null;
+            }
+        }
+
+
 
         // -- UNITY
 
@@ -166,6 +176,7 @@ namespace Ruvah.AI.NodeSystem
         private void OnEnable()
         {
             Initialize();
+            SetWindowTitle();
         }
     }
 
