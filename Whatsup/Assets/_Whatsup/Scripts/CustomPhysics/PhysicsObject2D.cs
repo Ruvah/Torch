@@ -20,6 +20,9 @@ public class PhysicsObject2D : MonoBehaviour
         protected set;
     }
 
+    public Vector2 Velocity => _Velocity;
+
+
     // -- FIELDS
 
     protected const int BufferSize = 16;
@@ -30,7 +33,7 @@ public class PhysicsObject2D : MonoBehaviour
     protected RaycastHit2D[] HitBuffer;
     protected Vector2 GroundNormal;
 
-    protected Vector2 Velocity;
+    protected Vector2 _Velocity;
 
 
     [SerializeField] private float MinGroundNormalY = 0.65f;
@@ -38,9 +41,6 @@ public class PhysicsObject2D : MonoBehaviour
     [SerializeField] private float GravityModifier;
     [SerializeField] private Rigidbody2D Rigidbody;
     [SerializeField] private CapsuleCollider2D Collider;
-
-    [Header("Debug")]
-    [SerializeField] private bool DrawDebugInfo;
 
 
     public void ApplyMove(Vector2 delta, bool is_y_movement)
@@ -64,11 +64,11 @@ public class PhysicsObject2D : MonoBehaviour
                     }
                 }
 
-                float projection = Vector2.Dot(Velocity, current_normal);
+                float projection = Vector2.Dot(_Velocity, current_normal);
 
                 if (projection < 0)
                 {
-                    Velocity -= projection * current_normal;
+                    _Velocity -= projection * current_normal;
                 }
 
                 float modified_distance = hit.distance - ShellThickness;
@@ -79,14 +79,19 @@ public class PhysicsObject2D : MonoBehaviour
         Rigidbody.position += delta.normalized * distance;
     }
 
+    protected virtual void ComputeVelocity()
+    {
+
+    }
+
     private void UpdateMovement()
     {
-        Velocity += GravityModifier * Time.deltaTime * Physics2D.gravity;
-        Velocity.x = TargetVelocity.x;
+        _Velocity += GravityModifier * Time.deltaTime * Physics2D.gravity;
+        _Velocity.x = TargetVelocity.x;
 
         IsGrounded = false;
 
-        var delta_position = Velocity * Time.deltaTime;
+        var delta_position = _Velocity * Time.deltaTime;
         //perpendicular vector from the ground normal
         Vector2 move_along_ground = new Vector2(GroundNormal.y, GroundNormal.x);
 
@@ -100,6 +105,12 @@ public class PhysicsObject2D : MonoBehaviour
     }
 
     // -- UNITY
+
+    private void Update()
+    {
+        TargetVelocity = Vector2.zero;
+        ComputeVelocity();
+    }
 
     private void FixedUpdate()
     {
