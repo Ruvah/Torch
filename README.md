@@ -1,4 +1,4 @@
-# Whatsup
+# Torch
 
 Playground to learn some game design and oppertunity to write some new tools for myself.
 
@@ -10,4 +10,6 @@ Tools:
 
 Gameplay:
 
-- WIP Prototype Phone texting
+Prototype stage
+
+
