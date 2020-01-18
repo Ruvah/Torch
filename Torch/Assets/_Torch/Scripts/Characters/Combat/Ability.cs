@@ -15,13 +15,18 @@ public abstract class Ability : ScriptableObject
     // -- FIELDS
 
     public float CurrentCooldown;
-    protected CharacterController Caster;
+    protected Character Caster;
+    protected ITargeteable Target;
 
     // -- METHODS
 
-    public abstract void Cast(CharacterController caster);
+    public virtual void Cast(Character caster)
+    {
+        Caster = caster;
+        Target = Caster.Targeter.Target;
+    }
 
-    public virtual void Update(float delta_time)
+    public virtual void UpdateAbility(float delta_time)
     {
         CurrentCooldown -= delta_time;
         CurrentCooldown = Mathf.Max(CurrentCooldown, 0);

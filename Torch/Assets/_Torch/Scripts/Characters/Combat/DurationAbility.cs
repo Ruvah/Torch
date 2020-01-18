@@ -41,9 +41,9 @@ public abstract class DurationAbility : Ability
         TimeEventsQueue.Sort();
     }
 
-    public override void Update(float delta_time)
+    public override void UpdateAbility(float delta_time)
     {
-        base.Update(delta_time);
+        base.UpdateAbility(delta_time);
         if (IsActive)
         {
             CurrentDuration += delta_time;

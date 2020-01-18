@@ -10,7 +10,7 @@ public class CharacterAnimation : MonoBehaviour
     // -- FIELDS
 
     [HideInInspector]
-    public CharacterController Character;
+    public Character Character;
 
 
     private static readonly int MovementSpeed = Animator.StringToHash("MovementSpeed");

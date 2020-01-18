@@ -28,7 +28,6 @@ public class PhysicsObject : MonoBehaviour
     [SerializeField] private float ShellThickness = 0.01f;
     [SerializeField] private float GravityModifier;
     [SerializeField] private Rigidbody Rigidbody;
-    [SerializeField] private CapsuleCollider Collider;
 
 
     public void ApplyMove(Vector3 delta, bool is_y_movement)

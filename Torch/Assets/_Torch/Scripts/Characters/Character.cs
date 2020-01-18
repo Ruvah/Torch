@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class Character : MonoBehaviour, ITargeteable
 {
    // -- PROPERTIES
 
@@ -11,6 +11,8 @@ public class CharacterController : MonoBehaviour
    public CharacterMovement Movement => movement;
    public CharacterCombat Combat => combat;
    public CharacterAnimation Animation => animation;
+   public HealthManager Health => health;
+   public Targeter Targeter => targeter;
 
    // -- FIELDS
 
@@ -19,14 +21,22 @@ public class CharacterController : MonoBehaviour
    [SerializeField] private CharacterMovement movement;
    [SerializeField] private CharacterCombat combat;
    [SerializeField] private CharacterAnimation animation;
-   [SerializeField] private CharacterHealth health;
+   [SerializeField] private HealthManager health;
+   [SerializeField] private Targeter targeter;
+
+   // -- METHODS
+
+   public virtual bool IsPlayerTargetable()
+   {
+      return true;
+   }
 
    // -- UNITY
 
    private void Awake()
    {
-
-      combat.Controller = this;
+      Health.Character = this;
+      combat.Character = this;
       animation.Character = this;
    }
 }

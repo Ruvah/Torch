@@ -11,7 +11,7 @@ public class MeleeHit : DurationAbility
     // -- METHODS
 
 
-    public override void Cast(CharacterController caster)
+    public override void Cast(Character caster)
     {
         caster.Animation.HitDownward();
     }
