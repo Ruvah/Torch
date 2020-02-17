@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Tree : ResourcePoint
 {
-    public override void Interact(CharacterController character)
+    public override void Interact(ControllableCharacter character)
     {
-        character.
+        character.Harvester.HarvestTree(this);
     }
 }

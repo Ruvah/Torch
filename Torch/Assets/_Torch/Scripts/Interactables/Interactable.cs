@@ -4,5 +4,18 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public abstract void Interact(CharacterController character);
+    // -- PROPERTIES
+
+    public float InteractionRadius => interactionRadius;
+
+    // -- FIELDS
+
+
+    [SerializeField] private float interactionRadius;
+
+
+    // -- METHODS
+
+
+    public abstract void Interact(ControllableCharacter character);
 }

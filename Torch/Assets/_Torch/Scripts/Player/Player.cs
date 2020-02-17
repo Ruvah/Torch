@@ -38,12 +38,14 @@ public class Player : MonoBehaviour
         var other = hit.collider;
         if (!other.CompareTag("Unit"))
         {
-            selectedCharacter = null;
             return;
         }
 
         var character = other.GetComponent<ControllableCharacter>();
-        selectedCharacter = character;
+        if (character != null)
+        {
+            selectedCharacter = character;
+        }
     }
 
     private void IssueCommand()
@@ -58,8 +60,10 @@ public class Player : MonoBehaviour
         if (interactable != null)
         {
             selectedCharacter.SetTarget(interactable);
+            return;
         }
 
+        selectedCharacter.ClearTarget();
         selectedCharacter.MoveTo(hit.point);
     }
 

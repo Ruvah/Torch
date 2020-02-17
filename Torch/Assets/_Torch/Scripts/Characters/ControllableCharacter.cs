@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,28 +10,45 @@ public class ControllableCharacter : MonoBehaviour
     public Interactable Target
     {
         get => target;
-        set
-        {
-            target = value;
-            motor.FollowTarget(target.transform);
-        }
     }
+
+    public CharacterHarvester Harvester => harvester;
 
     // -- FIELDS
 
     private Interactable target;
 
+    [SerializeField] private CharacterHarvester harvester;
     [SerializeField] private CharacterMotor motor;
 
     // -- METHODS
 
+    public void SetTarget(Interactable interactable)
+    {
+        target = interactable;
+        motor.FollowTarget(target.transform);
+    }
+
+    public void ClearTarget()
+    {
+        harvester.StopHarvesting();
+        motor.StopFollowing();
+        target = null;
+    }
+
     public void MoveTo(Vector3 position)
     {
+        harvester.StopHarvesting();
         motor.MoveTo(position);
     }
 
-    public void SetTarget(Interactable target_to_be)
+    // -- UNITY
+
+    private void Update()
     {
-        target = target_to_be;
+        if (Target != null && Vector3.Distance(Target.transform.position, transform.position) <= Target.InteractionRadius)
+        {
+            Target.Interact(this);
+        }
     }
 }

@@ -9,28 +9,28 @@ public class CharacterAnimation : MonoBehaviour
 
     // -- FIELDS
 
-    [HideInInspector]
-    public Character Character;
-
-
-    private static readonly int MovementSpeed = Animator.StringToHash("MovementSpeed");
-    private static readonly int DownwardHit = Animator.StringToHash("DownwardHack");
-
+    private static int isChopping = Animator.StringToHash("IsChopping");
 
     [SerializeField] private Animator CharacterAnimator;
+    [SerializeField] private ControllableCharacter character;
 
     // -- METHODS
 
-
-    public void HitDownward()
+    private void CharacterHarvester_OnChoppingStarted()
     {
-        CharacterAnimator.SetTrigger(DownwardHit);
+        CharacterAnimator.SetBool(isChopping, true);
+    }
+
+    private void CharacterHarvester_OnHarvestingStopped()
+    {
+        CharacterAnimator.SetBool(isChopping, false);
     }
 
     // -- UNITY
 
-    private void Update()
+    private void Awake()
     {
-        CharacterAnimator.SetFloat(MovementSpeed, Character.Movement.CurrentSpeed);
+        character.Harvester.OnChoppingStarted += CharacterHarvester_OnChoppingStarted;
+        character.Harvester.OnHarvestingStopped += CharacterHarvester_OnHarvestingStopped;
     }
 }

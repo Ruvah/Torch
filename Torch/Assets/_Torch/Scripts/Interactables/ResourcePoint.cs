@@ -15,13 +15,13 @@ public abstract class ResourcePoint : Interactable
 
     // -- METHODS
 
-    public void TakeResource(ControllableCharacter character)
+    public void Hit()
     {
         if (IsDepleted)
         {
             return;
         }
 
-        --AmountOfResources;
+        Debug.Log("ResourcePoint has been hit");
     }
 }
