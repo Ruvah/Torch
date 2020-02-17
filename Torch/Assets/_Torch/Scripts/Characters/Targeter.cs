@@ -12,7 +12,12 @@ public class Targeter : MonoBehaviour
         private set { target = value; }
     }
 
+
+
     // -- FIELDS
+
+    [HideInInspector]
+    public Character Character;
 
     private ITargeteable target;
 

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WindowRect:
     serializedVersion: 2
-    x: 4931.123
-    y: 4922.0615
+    x: 4764.123
+    y: 4883.0615
     width: 100
     height: 50
   Connections:
@@ -34,8 +34,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WindowRect:
     serializedVersion: 2
-    x: 5182.7153
-    y: 5045.885
+    x: 4694.7153
+    y: 5010.885
     width: 100
     height: 50
   Connections: []
@@ -53,28 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodesList:
   - {fileID: -7547713053983257856}
-  - {fileID: 885591132779192077}
   - {fileID: -8194991859583518168}
   Variables: []
---- !u!114 &885591132779192077
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73e966440ba6cf243bbfe9ca321a86df, type: 3}
-  m_Name: New State
-  m_EditorClassIdentifier: 
-  WindowRect:
-    serializedVersion: 2
-    x: 5160.572
-    y: 4923.92
-    width: 100
-    height: 50
-  Connections: []
 --- !u!114 &8593040265718897327
 MonoBehaviour:
   m_ObjectHideFlags: 0

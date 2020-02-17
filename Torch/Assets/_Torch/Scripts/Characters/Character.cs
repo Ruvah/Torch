@@ -38,5 +38,6 @@ public class Character : MonoBehaviour, ITargeteable
       Health.Character = this;
       combat.Character = this;
       animation.Character = this;
+      targeter.Character = this;
    }
 }
