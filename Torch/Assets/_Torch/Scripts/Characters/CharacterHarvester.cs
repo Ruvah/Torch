@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class CharacterHarvester : MonoBehaviour
 {
     // -- TYPES
+
+    // -- PROPERTIES
+
+    public float HarvestDamage => harvestDamage;
 
 
     // -- FIELDS
@@ -12,7 +17,11 @@ public class CharacterHarvester : MonoBehaviour
     public event CommonDelegates.VoidHandler OnChoppingStarted;
     public event CommonDelegates.VoidHandler OnHarvestingStopped;
 
+    public ControllableCharacter Character;
+
     private ResourcePoint harvestTarget;
+
+    [SerializeField] private float harvestDamage;
 
     public void HarvestTree(Tree tree)
     {
@@ -38,6 +47,6 @@ public class CharacterHarvester : MonoBehaviour
             StopHarvesting();
             return;
         }
-        harvestTarget.Hit();
+        harvestTarget.Hit(this);
     }
 }

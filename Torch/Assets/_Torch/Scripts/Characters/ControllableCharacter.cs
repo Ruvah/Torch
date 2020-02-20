@@ -18,6 +18,7 @@ public class ControllableCharacter : MonoBehaviour
 
     private Interactable target;
 
+    [SerializeField] private CharacterInventory inventory;
     [SerializeField] private CharacterHarvester harvester;
     [SerializeField] private CharacterMotor motor;
 
@@ -42,13 +43,24 @@ public class ControllableCharacter : MonoBehaviour
         motor.MoveTo(position);
     }
 
+    public void GiveItem(Item item)
+    {
+        inventory.AddItem(item);
+    }
+
     // -- UNITY
 
     private void Update()
     {
         if (Target != null && Vector3.Distance(Target.transform.position, transform.position) <= Target.InteractionRadius)
         {
+            Debug.Log($"{name}: interacting with {Target.name}");
             Target.Interact(this);
         }
+    }
+
+    private void Awake()
+    {
+        harvester.Character = this;
     }
 }

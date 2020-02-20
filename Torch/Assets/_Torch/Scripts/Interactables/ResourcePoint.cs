@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,11 +12,16 @@ public abstract class ResourcePoint : Interactable
     // -- FIELDS
 
     public int AmountOfResources;
+    public float Health;
+
+    private float currentHealth;
+
+    [SerializeField] private Item drop;
 
 
     // -- METHODS
 
-    public void Hit()
+    public void Hit(CharacterHarvester harvester)
     {
         if (IsDepleted)
         {
@@ -23,5 +29,24 @@ public abstract class ResourcePoint : Interactable
         }
 
         Debug.Log("ResourcePoint has been hit");
+
+        currentHealth -= harvester.HarvestDamage;
+
+        if (!(currentHealth <= 0))
+        {
+            return;
+        }
+
+        AmountOfResources--;
+        currentHealth = Health;
+        Debug.Log("character gets item from harvesting");
+        harvester.Character.GiveItem(drop);
+    }
+
+    // -- UNITY
+
+    private void Awake()
+    {
+        currentHealth = Health;
     }
 }
